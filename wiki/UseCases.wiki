@@ -5,4 +5,5 @@
   * Search for Books (title, isbn, author)
   * Checkout a book (includes who checked it out)
   * Display list of users (ppl who have checked out books, etc)
+  * Book wish list
 ...
