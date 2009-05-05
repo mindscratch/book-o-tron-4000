@@ -1,0 +1,18 @@
+#summary Project structure, including modules, layers, and file layout
+
+= Introduction =
+
+Book-o-tron's should be built and laid out with maven.  The first impl should consist of a parent project with two modules; flex ui and server side application.
+
+== Flex UI ==
+
+
+== Server Side Application ==
+
+The Server side application shall consist of 3 layers: _Resource_, _Service_, and _Data Access_.
+
+The _Resource_ layer should provide a RESTful style interface to all application data.  Its purpose is to provide a way for a user to interact with book-o-tron without having to use the Flex UI.  A resource will perform its action by calling one or more services.
+
+The _Service_ layer should provide all logical services.  A service should perform its action by making one or more calls to the data access layer within a single transaction.
+
+The _Data Access_ layer should encapsulate all data access CRUD operations.
