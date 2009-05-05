@@ -5,6 +5,7 @@
 Book-o-tron's should be built and laid out with maven.  The first impl should consist of a parent project with two modules; flex ui and server side application.
 
 == Flex UI ==
+FILLER
 
 
 == Server Side Application ==
