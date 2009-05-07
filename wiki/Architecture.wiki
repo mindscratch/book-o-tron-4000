@@ -10,7 +10,7 @@ FILLER
 
 == Server Side Application ==
 
-The Server side application shall consist of 3 layers: _Resource_, _Service_, and _Data Access_.
+The Server side application shall consist of 3 core layers: _Resource_, _Service_, and _Data Access_.  Each layer will be packaged into a separate jar file containing all required resources for that layer.  If new functionality is required that falls outside of these layers (i.e. monitoring) then a new jar file will be created which contains the new functionality.  This new functionality will be wired into the existing core layers through the use of Aspects.  This allows the addition and subtraction of non-core functionality without requiring modification to or recompilation of the 3 core layers.
 
 The _Resource_ layer should provide a RESTful style interface to all application data.  Its purpose is to provide a way for a user to interact with book-o-tron without having to use the Flex UI.  A resource will perform its action by calling one or more services.
 
