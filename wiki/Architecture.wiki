@@ -5,8 +5,7 @@
 Book-o-tron's should be built and laid out with maven.  The first impl should consist of a parent project with two modules; flex ui and server side application.
 
 == Flex UI ==
-FILLER
-
+The client-side application will take the form a flex-based GUI following traditional mvc and service locator patterns. Communication with the server-side application will be done through flex's own mx.rpc.http.HTTPService and/or mx.rpc.soap.WebService. Data will be exchanged with the server-side through XML or JSON structures. Utilization of an IOC framework like spring actionscript or parsley should be considered to simplify configuration of the flex client.  Testing support will be provided by the flexunit and flexcover projects.
 
 == Server Side Application ==
 
