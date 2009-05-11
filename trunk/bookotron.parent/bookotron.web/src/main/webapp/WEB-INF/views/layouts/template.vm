@@ -1,0 +1,10 @@
+<html>
+  <head>
+  	<title>Book-O-Tron 4000</title>
+  </head>
+  <body>
+     #parse($tiles.getAttribute("header"))
+     #parse($tiles.getAttribute("central"))
+     #parse($tiles.getAttribute("footer"))
+  </body>
+</html>
