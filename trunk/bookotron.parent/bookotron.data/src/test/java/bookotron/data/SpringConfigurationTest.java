@@ -18,12 +18,15 @@ public class SpringConfigurationTest extends AbstractDependencyInjectionSpringCo
 	BookDao bookDao;
 	
 	@Test
-	public void testBookSave() {
+	public void testBookSaveAndRetrieve() {
 		Book book = new Book();
 		book.setAuthor("Name");
 		book.setTitle("title");
 		book.setIsbn("1234");
 		bookDao.saveOrUpdate(book);
-		assertNotNull(book.getId());
+		assertTrue(book.getId() > 0);
+		Book newBook = bookDao.getBookById(book.getId());
+		assertNotNull(newBook);
+		assertTrue(newBook.getId() == book.getId());
 	}
 }
