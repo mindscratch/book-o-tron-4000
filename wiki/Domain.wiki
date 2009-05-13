@@ -1,6 +1,11 @@
 #summary Outline the domain objects
 
+The link below will display an initial UML Class diagram showing the objects and their properties, more work needs to be done to draw the relationships (figured that could happen once we iron out the objects).
+
 <a href="http://yuml.me/diagram/class/[Book|id:Long;title:String;isbns:Collection-ISBN-;edition:String;authors:Collection-Authors-;numPages:int;pubDate:Date;purchaseDate:Date;addDate:Date;modifyDate:Date;tags:Collection-Tag-;publisher:Publisher;description:String;price:float;reviews:Collection-Review-], [ISBN|id:Long;value:String], [Author|id:Long;firstName:String;lastName;authored:Collection-Book-], [Tag|id:Long;name:String;value:String], [Publisher|id:Long;name:String;website:String], [Review|id:Long;user:User;book:Book;text:String;addDate:Date;modifyDate:Date;comments:Collection-Comment-], [User|id:Long;name:String;email:String;lastLogin:Date], [Comment|id:Long;user:User;review:Review]">UML Diagram</a>
+
+
+This snippet is the text pasted into <a href="http://www.yuml.me/diagram/class/draw">yUML</a> to generate the diagram mentioned above.  This snippet is provided as a copy-paste reference for yUML.
 
 {{{
 [Book|id:Long;title:String;isbns:Collection-ISBN-;edition:String;authors:Collection-Authors-;numPages:int;pubDate:Date;purchaseDate:Date;addDate:Date;modifyDate:Date;tags:Collection-Tag-;publisher:Publisher;description:String;price:float;reviews:Collection-Review-],
