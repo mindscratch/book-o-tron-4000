@@ -2,14 +2,13 @@
 
 <a href="http://yuml.me/diagram/class/[Book|id:Long;title:String;isbns:Collection-ISBN-;edition:String;authors:Collection-Authors-;numPages:int;pubDate:Date;purchaseDate:Date;addDate:Date;modifyDate:Date;tags:Collection-Tag-;publisher:Publisher;description:String;price:float;reviews:Collection-Review-], [ISBN|id:Long;value:String], [Author|id:Long;firstName:String;lastName;authored:Collection-Book-], [Tag|id:Long;name:String;value:String], [Publisher|id:Long;name:String;website:String], [Review|id:Long;user:User;book:Book;text:String;addDate:Date;modifyDate:Date;comments:Collection-Comment-], [User|id:Long;name:String;email:String;lastLogin:Date], [Comment|id:Long;user:User;review:Review]">UML Diagram</a>
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+{{{
+[Book|id:Long;title:String;isbns:Collection-ISBN-;edition:String;authors:Collection-Authors-;numPages:int;pubDate:Date;purchaseDate:Date;addDate:Date;modifyDate:Date;tags:Collection-Tag-;publisher:Publisher;description:String;price:float;reviews:Collection-Review-],
+[ISBN|id:Long;value:String],
+[Author|id:Long;firstName:String;lastName;authored:Collection-Book-],
+[Tag|id:Long;name:String;value:String],
+[Publisher|id:Long;name:String;website:String],
+[Review|id:Long;user:User;book:Book;text:String;addDate:Date;modifyDate:Date;comments:Collection-Comment-],
+[User|id:Long;name:String;email:String;lastLogin:Date],
+[Comment|id:Long;user:User;review:Review]
+}}}
