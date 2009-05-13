@@ -47,4 +47,15 @@ public class Book {
 		this.isbn = isbn;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Book: [\n" +
+				"\tId: " +getId()+ "\n" +
+				"\tTitle: " +getTitle()+ "\n" +
+				"\tAuthor: " +getAuthor()+ "\n" +
+				"\tIsbn: " +getIsbn()+ "\n" +
+				"]";
+	}
+	
 }
