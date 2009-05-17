@@ -1,0 +1,20 @@
+Application{
+	background-color:#00162d;
+}
+
+Panel{
+    background-color:#bdbdbd;
+    border-color:#bdbdbd;
+    background-alpha:1;
+    border-alpha:1;
+    header-colors:#bdbdbd, #bdbdbd;
+    header-height:40;
+    highlight-alphas:.5,.25;
+    corner-radius:15;
+    drop-shadow-enabled:true;
+    rounded-bottom-corners:true;
+}
+
+.stdBtn{
+    corner-radius:0;
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+  <mx:Style source="/assets/css/main.css"/>
+  <mx:Panel id="welcomePanel" title="WELCOME TO THE BOOK-O-TRON 4000"
+	    width="50%" height="50%"
+	    horizontalCenter="0" verticalCenter="0">
+ </mx:Panel>
+</mx:Application>
