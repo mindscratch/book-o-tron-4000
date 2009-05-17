@@ -1,5 +1,6 @@
 Application{
 	background-color:#00162d;
+    font-size:12px;
 }
 
 Panel{
@@ -9,7 +10,7 @@ Panel{
     border-alpha:1;
     header-colors:#bdbdbd, #bdbdbd;
     header-height:40;
-    highlight-alphas:.5,.25;
+    highlight-alphas:.75,.25;
     corner-radius:15;
     drop-shadow-enabled:true;
     rounded-bottom-corners:true;

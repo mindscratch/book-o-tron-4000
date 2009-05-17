@@ -36,9 +36,11 @@
 
 		]]>
 	</mx:Script>
-  <mx:Panel id="welcomePanel" title="WELCOME TO THE BOOK-O-TRON 4000"
+  <mx:Panel id="welcomePanel" title="@Resource(key='WELCOME_PANEL_TITLE', bundle='UI')"
 	    width="50%" height="50%"
 	    horizontalCenter="0" verticalCenter="0">
         <mx:Label id="results" horizontalCenter="0" verticalCenter="0"/>
+        <mx:TextArea id="welcomeMessage" width="100%" height="100%" text="@Resource(key='WELCOME_PANEL_MESSAGE', bundle='UI')" 
+                backgroundAlpha="0" editable="false"/>
  </mx:Panel>
 </mx:Application>

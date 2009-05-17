@@ -23,6 +23,11 @@
 	  <output>target/${ui.swf.name}.swf</output>
 	  <contextRoot>bookotron.web</contextRoot>
        <sourceFile>ssig/ui/Main.mxml</sourceFile>
+        <compiledLocales>
+            <locale>en_US</locale>
+        </compiledLocales>
+        <allowSourcePathOverlap>true</allowSourcePathOverlap>
+        <keepGeneratedActionscript>true</keepGeneratedActionscript>
 	</configuration>
       </plugin>
     </plugins>
