@@ -1,0 +1,9 @@
+#labels ui
+=UI DEV LOG=
+
+==5/16 - 5/17==
+  * created bookotron.ui project and began integration wirh rest of bookotron. utilizing org.spricefactory for di and configuration - see sersources/context.xml
+  * added support for localization and resource bundles
+  * TODO
+    * establish logging
+    * stub out base ssig.ui.net.(rest) classes 
