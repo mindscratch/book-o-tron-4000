@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
-  <mx:Style source="/assets/css/main.css"/>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onCreationComplete()">
+    <mx:Style source="/assets/css/main.css"/>
+    <mx:Script>
+		<![CDATA[
+            import org.spicefactory.lib.task.events.TaskEvent;
+            import org.spicefactory.parsley.context.ApplicationContext;
+            import org.spicefactory.parsley.context.ApplicationContextParser;
+            import ssig.ui.net.Foo;
+            import ssig.ui.net.FooImpl;
+
+            private function onCreationComplete():void{
+                var a:Foo;
+                var b:FooImpl;
+                load();
+            }
+
+            public function load () : void {
+                var parser:ApplicationContextParser = new ApplicationContextParser("context", true);
+                parser.addFile("context.xml");
+                parser.addEventListener(TaskEvent.COMPLETE, onComplete);
+                parser.addEventListener(ErrorEvent.ERROR, onError);
+                parser.start();
+            }
+
+            private function onComplete (event:TaskEvent) : void {
+                trace("Context loaded");
+                var fm:Foo = FooImpl(ApplicationContext.root.getObject("fooMaster"));
+                results.text = "Foo Master " + fm.name + " of age " +  fm.age + " says '" + fm.kungFoo() + "'";
+            }
+
+            private function onError (event:ErrorEvent) : void {
+                results.text = "Error loading context: " + event.text;
+                trace("Error loading context: " + event.text);
+            }
+
+		]]>
+	</mx:Script>
   <mx:Panel id="welcomePanel" title="WELCOME TO THE BOOK-O-TRON 4000"
 	    width="50%" height="50%"
 	    horizontalCenter="0" verticalCenter="0">
+        <mx:Label id="results" horizontalCenter="0" verticalCenter="0"/>
  </mx:Panel>
 </mx:Application>

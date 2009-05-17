@@ -22,10 +22,20 @@
 	<configuration>
 	  <output>target/${ui.swf.name}.swf</output>
 	  <contextRoot>bookotron.web</contextRoot>
-	  <sourceFile>ssig/ui/Main.mxml</sourceFile> 
+       <sourceFile>ssig/ui/Main.mxml</sourceFile>
 	</configuration>
       </plugin>
     </plugins>
+      <resources>
+        <resource>
+            <filtering>true</filtering>
+            <directory>${basedir}/src/main/resources</directory>
+            <includes>
+                <include>context.xml</include>
+            </includes>
+            <targetPath>../</targetPath>
+        </resource>
+    </resources>
   </build>
   <dependencies>
     <dependency>

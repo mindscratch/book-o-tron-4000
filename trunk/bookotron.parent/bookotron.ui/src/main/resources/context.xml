@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-context
+        xmlns="http://www.spicefactory.org/parsley/1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.spicefactory.org/parsley/1.0
+                http://www.spicefactory.org/parsley/schema/1.0/parsley-context.xsd">
+    <factory>
+        <object id="fooMaster" type="ssig.ui.net.FooImpl">
+            <property name="name" value="Binki"/>
+            <property name="age" value="100"/>
+        </object>
+    </factory>
+</application-context>
