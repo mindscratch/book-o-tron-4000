@@ -1,4 +1,4 @@
-package ssig.ui.net {
+package ssig.ui.bookotron.net {
     public interface Foo {
         function set name(name:String):void;
         function get name():String;

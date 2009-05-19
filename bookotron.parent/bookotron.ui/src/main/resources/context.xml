@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.spicefactory.org/parsley/1.0
                 http://www.spicefactory.org/parsley/schema/1.0/parsley-context.xsd">
     <factory>
-        <object id="fooMaster" type="ssig.ui.net.FooImpl">
+        <object id="fooMaster" type="ssig.ui.bookotron.net.FooImpl">
             <property name="name" value="Binki"/>
             <property name="age" value="100"/>
         </object>
