@@ -8,3 +8,4 @@
     * establish logging
     * configure test context and loader
     * stub out base ssig.ui.net.(rest) classes 
+    * stub out base ssig.ui.model classes in accordance with domain outline 
