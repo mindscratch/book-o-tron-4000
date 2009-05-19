@@ -8,4 +8,8 @@
     * establish logging
     * configure test context and loader
     * stub out base ssig.ui.net.(rest) classes 
-    * stub out base ssig.ui.model classes in accordance with domain outline 
+    * ~~stub out base ssig.ui.model classes in accordance with domain outline ~~
+
+==5/18==
+ * changed base package from ssig.ui to ssig.ui.bookotron
+ * stubbed out base ssig.ui.model classes in accordance with domain outline
