@@ -19,3 +19,6 @@
  * created aggregator pom.xml
  * created bookotron.model project
   * implemented interfaces based on those listed on the [Domain] page (still need to have interfaces extend from IEntity and some other things, this will be done when I begin implementing the classes).
+
+==5/20==
+ * relocated ssig.* to bookotron.ui* package
