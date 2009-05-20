@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><project>
   <parent>
-    <artifactId>bookotron.parent</artifactId>
-    <groupId>ssig</groupId>
-    <version>1-SNAPSHOT</version>
+      <groupId>bookotron</groupId>
+      <artifactId>parent</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>ssig</groupId>
-  <artifactId>bookotron.ui</artifactId>
+  <groupId>bookotron</groupId>
+  <artifactId>ui</artifactId>
   <packaging>swf</packaging>
-  <name>bookotron.ui Flex</name>
-  <version>1-SNAPSHOT</version>
+  <name>BOOK-O-TRON :: UI</name>
   <build>
     <sourceDirectory>src/main/flex</sourceDirectory>
     <testSourceDirectory>src/test/flex</testSourceDirectory>
