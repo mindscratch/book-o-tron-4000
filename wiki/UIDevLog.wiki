@@ -13,3 +13,8 @@
 ==5/18==
  * changed base package from ssig.ui to ssig.ui.bookotron
  * stubbed out base ssig.ui.model classes in accordance with domain outline
+
+==5/19==
+ * moved projects out from underneath bookotron.parent
+ * created aggregator pom.xml
+ * created bookotron.model project
