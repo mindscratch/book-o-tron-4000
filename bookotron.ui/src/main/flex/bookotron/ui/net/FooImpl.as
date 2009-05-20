@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.net {
+package bookotron.ui.net {
 public class FooImpl implements Foo{
     private var _name:String;
     private var _age:Number;

@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 public class User extends BaseEntity{
 
     private var _name:String;

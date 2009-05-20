@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 public interface IEntity {
     function get id():Number;
     function set id(id:Number):void;

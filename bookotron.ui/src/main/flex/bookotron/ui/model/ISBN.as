@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 public class ISBN extends BaseEntity{
 
     private var _value:String;

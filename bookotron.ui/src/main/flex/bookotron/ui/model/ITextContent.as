@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 public interface ITextContent extends IContent{
 
     function get numPages():int;

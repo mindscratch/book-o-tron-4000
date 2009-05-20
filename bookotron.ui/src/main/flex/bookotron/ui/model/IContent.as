@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 import mx.collections.ListCollectionView;
 public interface IContent {
 
