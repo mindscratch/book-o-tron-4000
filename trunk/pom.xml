@@ -16,6 +16,7 @@
 
   <modules>
     <module>bookotron.parent</module>
+	<module>bookotron.model</module>
     <module>bookotron.data</module>
     <module>bookotron.service</module>
     <module>bookotron.resource</module>
