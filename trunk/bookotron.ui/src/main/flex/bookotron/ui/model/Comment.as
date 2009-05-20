@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 public class Comment extends BaseEntity{
     private var _user:User;
     private var _review:Review;

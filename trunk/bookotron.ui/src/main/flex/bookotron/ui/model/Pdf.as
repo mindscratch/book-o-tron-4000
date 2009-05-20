@@ -1,4 +1,4 @@
-package ssig.ui.bookotron.model {
+package bookotron.ui.model {
 public class Pdf extends BaseTextContent{
 
     private var _fileSize:Number;

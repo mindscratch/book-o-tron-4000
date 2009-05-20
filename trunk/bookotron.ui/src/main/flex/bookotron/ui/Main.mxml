@@ -6,8 +6,8 @@
             import org.spicefactory.lib.task.events.TaskEvent;
             import org.spicefactory.parsley.context.ApplicationContext;
             import org.spicefactory.parsley.context.ApplicationContextParser;
-            import ssig.ui.bookotron.net.Foo;
-            import ssig.ui.bookotron.net.FooImpl;
+            import bookotron.ui.net.Foo;
+            import bookotron.ui.net.FooImpl;
 
             private function onCreationComplete():void{
                 var a:Foo;

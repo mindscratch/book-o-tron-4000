@@ -22,7 +22,7 @@
 	<configuration>
 	  <output>target/${ui.swf.name}.swf</output>
 	  <contextRoot>bookotron.web</contextRoot>
-       <sourceFile>ssig/ui/bookotron/Main.mxml</sourceFile>
+       <sourceFile>bookotron/ui/Main.mxml</sourceFile>
         <compiledLocales>
             <locale>en_US</locale>
         </compiledLocales>
