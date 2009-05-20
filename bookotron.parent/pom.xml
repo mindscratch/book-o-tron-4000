@@ -8,6 +8,7 @@
 	<artifactId>parent</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>BOOK-O-TRON :: Parent</name>
+    <url>http://code.google.com/p/book-o-tron-4000/</url>
 	<build>
 		<plugins>
 			<plugin>
