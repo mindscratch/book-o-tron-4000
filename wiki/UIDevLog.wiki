@@ -18,3 +18,4 @@
  * moved projects out from underneath bookotron.parent
  * created aggregator pom.xml
  * created bookotron.model project
+  * implemented interfaces based on those listed on the [Domain] page
