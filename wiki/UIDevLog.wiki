@@ -22,3 +22,6 @@
 
 ==5/20==
  * relocated ssig.* to bookotron.ui* package
+
+==5/21==
+ * implemented all interfaces in bookotron.model to provide base implementations
