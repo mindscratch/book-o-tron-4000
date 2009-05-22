@@ -37,5 +37,3 @@ This snippet is the text pasted into <a href="http://www.yuml.me/diagram/class/d
 [IEntity]^[Tag],
 [IEntity]^[Author],
 }}}
-
-[bookotron-model-class-diagram.jpeg]
