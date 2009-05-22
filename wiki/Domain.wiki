@@ -38,4 +38,4 @@ This snippet is the text pasted into <a href="http://www.yuml.me/diagram/class/d
 [IEntity]^[Author],
 }}}
 
-<img src="http://code.google.com/p/book-o-tron-4000/source/browse/wiki/bookotron-model-class-diagram.jpeg" />
+[bookotron-model-class-diagram.jpeg]
