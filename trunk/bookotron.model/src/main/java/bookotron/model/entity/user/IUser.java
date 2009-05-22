@@ -1,5 +1,7 @@
 package bookotron.model.entity.user;
 
+import bookotron.model.entity.IEntity;
+
 import java.util.Date;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Date;
  * Date: May 19, 2009
  * Time: 10:08:22 PM
  */
-public interface IUser {
+public interface IUser extends IEntity {
 
     String getName();
     void setName(String value);

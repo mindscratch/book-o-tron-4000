@@ -4,6 +4,7 @@ import bookotron.model.entity.author.IAuthor;
 import bookotron.model.entity.tag.ITag;
 import bookotron.model.entity.publisher.IPublisher;
 import bookotron.model.entity.review.IReview;
+import bookotron.model.entity.IEntity;
 
 import java.util.Collection;
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.Date;
  * Date: May 19, 2009
  * Time: 10:17:49 PM
  */
-public interface IContent {
+public interface IContent extends IEntity {
 
     String getTitle();
     void setTitle(String value);
