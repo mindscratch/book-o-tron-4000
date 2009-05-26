@@ -1,0 +1,8 @@
+This project depends on two artifacts, parsley and spicelib, which are not contained in the standard maven2
+repository.  To add them to your local repo:
+
+1) Download and unzip the parsley and spicelib products from http://spicefactory.org/
+2) install the two artifacts with the following maven commands:
+
+mvn install:install-file -Dfile=parsley-1.0.3.swc -DgroupId=org.spicefactory -DartifactId=parsley -Dversion=1.0.3 -Dpackaging=swc
+mvn install:install-file -Dfile=spicelib-1.1.1.swc -DgroupId=org.spicefactory -DartifactId=spicelib -Dversion=1.1.1 -Dpackaging=swc
