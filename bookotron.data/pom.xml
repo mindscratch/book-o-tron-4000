@@ -12,7 +12,13 @@
 	<packaging>jar</packaging>
 	<name>BOOK-O-TRON :: Data</name>
 	<dependencies>
+        <!-- Book-o-Tron Depedencies -->
+        <dependency>
+            <groupId>bookotron</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
 
+        <!-- Third Party Dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -108,5 +114,72 @@
 			<artifactId>junit</artifactId>
 			<version>4.4</version>
 		</dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.4.2</version>
+        </dependency>
 	</dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+ 			<plugin>
+				<!-- HIBERNATE 3 PLUGIN - this can output the DDL to a file -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>hbm2ddl</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2ddl</name>
+							<implementation>annotationconfiguration</implementation>
+						</component>
+					</components>
+					<componentProperties>
+						<implementation>jpaconfiguration</implementation>
+						<persistenceunit>book-o-tron-persistence-unit</persistenceunit>
+						<outputfilename>book-o-tron-schema.ddl</outputfilename>
+						<propertyfile>${basedir}/src/main/resources/database.properties</propertyfile>
+						<drop>false</drop>
+						<create>true</create>
+						<export>false</export>
+						<format>true</format>
+					</componentProperties>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
 </project>

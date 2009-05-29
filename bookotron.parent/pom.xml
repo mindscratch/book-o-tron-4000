@@ -42,6 +42,11 @@
 			<id>java.net</id>
 			<url>http://download.java.net/maven/2</url>
 		</repository>
+        <repository>
+            <id>codehaus</id>
+            <name>codehaus</name>
+            <url>http://repository.codehaus.org/</url>
+        </repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -49,12 +54,24 @@
 			<name>sonatype</name>
 			<url>http://repository.sonatype.org/content/groups/public</url>
 		</pluginRepository>
+        <pluginRepository>
+            <id>codehaus</id>
+            <name>codehaus</name>
+            <url>http://repository.codehaus.org/</url>
+        </pluginRepository>
 	</pluginRepositories>
 
 	<properties>
 		<spring.version>2.5.6</spring.version>
 		<ui.swf.name>ui</ui.swf.name>
         <bookotron.version>1.0-SNAPSHOT</bookotron.version>
+
+        <!-- Data Layer DataSource properties -->
+        <data.ds.driver>org.hsqldb.jdbcDriver</data.ds.driver>
+        <data.ds.dialect>org.hibernate.dialect.HSQLDialect</data.ds.dialect>
+        <data.ds.url>jdbc:hsqldb:hsql:/localhost/book-o-tron</data.ds.url>
+        <data.ds.username>sa</data.ds.username>
+        <data.ds.password></data.ds.password>
 	</properties>
 
   	<dependencyManagement>
