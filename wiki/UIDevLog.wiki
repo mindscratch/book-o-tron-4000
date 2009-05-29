@@ -25,3 +25,6 @@
 
 ==5/21==
  * implemented all interfaces in bookotron.model to provide base implementations
+
+==5/29==
+ * implemented a BaseDAO and setup Spring/JPA/Hibernate/HSQL
