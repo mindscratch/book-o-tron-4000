@@ -1,6 +1,6 @@
 package bookotron.data.dao.impl;
 
-import bookotron.data.dao.IBaseDAO;
+import bookotron.data.dao.IBaseDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository  // this provides Spring's exception translation
-public class BaseDaoImpl<T> implements IBaseDAO<T> {
+public class BaseDao<T> implements IBaseDao<T> {
 
+    // http://static.springframework.org/spring/docs/2.5.x/reference/orm.html#orm-jpa-straight
+    @PersistenceContext
     private EntityManager em;
 
     @Transactional
@@ -45,10 +47,5 @@ public class BaseDaoImpl<T> implements IBaseDAO<T> {
     @Transactional
     public T find(Class<T> objectClass, Serializable id) {
         return em.find(objectClass, id);
-    }
-
-    @PersistenceContext  // this tells Spring to inject the EntityManager
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
     }
 }

@@ -1,19 +1,26 @@
-package bookotron.model.entity.content.text.book;
+package bookotron.data.model.entity.impl.content.text.book;
 
-import bookotron.model.entity.content.text.AbstractTextContent;
+import bookotron.model.entity.content.text.book.IBookTextContent;
 import bookotron.model.entity.isbn.IISBN;
+import bookotron.data.model.entity.impl.content.text.AbstractTextContent;
+import bookotron.data.model.entity.impl.isbn.AbstractISBN;
 
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
  * Date: May 21, 2009
  * Time: 10:19:17 PM
  */
+@Entity
+@Table(name="BOOK")
 public class BaseBookTextContent extends AbstractTextContent implements IBookTextContent {
 
     private Collection<IISBN> isbns;
     private String edition;
 
+    @JoinColumn(name="ISBNS")
+    @OneToMany(targetEntity = AbstractISBN.class, cascade = CascadeType.ALL)
     public Collection<IISBN> getISBNs() {
         return isbns;
     }
@@ -22,6 +29,7 @@ public class BaseBookTextContent extends AbstractTextContent implements IBookTex
         this.isbns = isbns;
     }
 
+    @Column(name="EDITION")
     public String getEdition() {
         return edition;
     }

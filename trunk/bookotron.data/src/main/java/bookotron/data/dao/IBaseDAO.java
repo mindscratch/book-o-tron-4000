@@ -3,7 +3,7 @@ package bookotron.data.dao;
 import java.util.List;
 import java.io.Serializable;
 
-public interface IBaseDAO<T> {
+public interface IBaseDao<T> {
 
     public T insert(T t);
 

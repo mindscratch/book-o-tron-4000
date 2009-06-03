@@ -5,5 +5,10 @@
    version="1.0">
    <persistence-unit name="book-o-tron-persistence-unit" transaction-type="RESOURCE_LOCAL">
       <!-- all this is configured via spring -->
+       <mapping-file>META-INF/orm-context.xml</mapping-file>
+       <properties>
+           <property name="hibernate.hbm2ddl.auto" value="create" />
+           <property name="hibernate.archive.autodetection" value="class" />
+       </properties>
    </persistence-unit>
 </persistence>

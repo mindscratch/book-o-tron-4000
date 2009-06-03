@@ -1,20 +1,26 @@
-package bookotron.model.entity.author;
+package bookotron.data.model.entity.impl.author;
 
-import bookotron.model.entity.AbstractEntity;
+import bookotron.model.entity.author.IAuthor;
 import bookotron.model.entity.content.IContent;
+import bookotron.data.model.entity.impl.AbstractEntity;
+import bookotron.data.model.entity.impl.content.AbstractContent;
 
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
  * Date: May 21, 2009
  * Time: 10:09:34 PM
  */
+@Entity
+@Table(name="AUTHOR")
 public class BaseAuthor extends AbstractEntity implements IAuthor {
 
     private String firstName;
     private String lastName;
     private Collection<IContent> authored;
 
+    @Column(name="FIRST_NAME")
     public String getFirstName() {
         return firstName;
     }
@@ -23,6 +29,7 @@ public class BaseAuthor extends AbstractEntity implements IAuthor {
         this.firstName = firstName;
     }
 
+    @Column(name="LAST_NAME")
     public String getLastName() {
         return lastName;
     }
@@ -34,6 +41,8 @@ public class BaseAuthor extends AbstractEntity implements IAuthor {
     /**
      * @return  the collection of content that was authored, or co-authored, by this author.
      */
+    @JoinColumn(name = "CONTENT")
+    @ManyToMany(targetEntity = AbstractContent.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     public Collection<IContent> getAuthored() {
         return authored;
     }
