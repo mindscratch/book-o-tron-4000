@@ -1,8 +1,11 @@
 package bookotron.model.entity.user;
 
 import bookotron.model.entity.IEntity;
+import bookotron.model.entity.review.IReview;
+import bookotron.model.entity.comment.IComment;
 
 import java.util.Date;
+import java.util.Collection;
 
 /**
  * A user is someone who uses the application to add books, checkout books, update book details, etc.
@@ -20,4 +23,10 @@ public interface IUser extends IEntity {
 
     Date getLastLogin();
     void setLastLogin(Date value);
+    
+    Collection<IComment> getComments();
+    void setComments(Collection<IComment> comments);
+
+    Collection<IReview> getReviews();
+    void setReviews(Collection<IReview> reviews);
 }

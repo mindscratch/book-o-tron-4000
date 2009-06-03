@@ -1,6 +1,9 @@
 package bookotron.model.entity.publisher;
 
 import bookotron.model.entity.IEntity;
+import bookotron.model.entity.content.IContent;
+
+import java.util.Collection;
 
 /**
  * Date: May 19, 2009
@@ -14,4 +17,6 @@ public interface IPublisher extends IEntity {
     String getWebsite();
     void setWebsite(String value);
 
+    Collection<IContent> getContent();
+    void setContent(Collection<IContent> content);
 }
