@@ -19,6 +19,8 @@ import bookotron.data.dao.IBaseDao;
 import bookotron.data.model.entity.impl.author.BaseAuthor;
 import bookotron.model.entity.author.IAuthor;
 
+import static org.junit.Assert.*;
+
 import javax.sql.DataSource;
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -33,7 +35,7 @@ import java.sql.Connection;
 //transaction it creates.
 @TransactionConfiguration(defaultRollback=true)
 @ContextConfiguration(locations = {"classpath:test-context.xml"})
-public class AuthorDaoTest {
+public class AuthorDaoTest extends AbstractTransactionalDataSourceSpringContextTests {
 
     // under test
     @Autowired
