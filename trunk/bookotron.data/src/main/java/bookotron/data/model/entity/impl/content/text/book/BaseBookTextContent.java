@@ -1,12 +1,22 @@
 package bookotron.data.model.entity.impl.content.text.book;
 
-import bookotron.model.entity.content.text.book.IBookTextContent;
-import bookotron.model.entity.isbn.IISBN;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import bookotron.data.model.entity.impl.content.text.AbstractTextContent;
 import bookotron.data.model.entity.impl.isbn.AbstractISBN;
-
-import javax.persistence.*;
-import java.util.Collection;
+import bookotron.model.entity.content.text.book.IBookTextContent;
+import bookotron.model.entity.isbn.IISBN;
 
 /**
  * Date: May 21, 2009
@@ -14,6 +24,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name="BOOK")
+@XStreamAlias("Book")
 public class BaseBookTextContent extends AbstractTextContent implements IBookTextContent {
 
     private Collection<IISBN> isbns;

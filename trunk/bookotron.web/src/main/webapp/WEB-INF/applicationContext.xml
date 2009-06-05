@@ -6,4 +6,5 @@
 	<import resource="classpath:bookotron-data.xml"/>
 	<import resource="classpath:bookotron-service.xml"/>
 	<import resource="classpath:bookotron-resource.xml"/>
+	
 </beans>

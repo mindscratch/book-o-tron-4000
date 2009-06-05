@@ -8,8 +8,14 @@
     <!-- Have Spring act as a JPA Container, which will inject the EntityManager from the EntityManagerFactory
          into the DAO's -->
     <!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/> -->
-    <context:annotation-config />
-
+    
+     
+    <context:annotation-config  />
+     
+<!--        
+    <context:component-scan base-package="bookotron.data"/>
+-->
+	
     <import resource="META-INF/orm-context.xml"/>
 
 </beans>
