@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @MappedSuperclass
-public abstract class AbstractISBN extends AbstractEntity implements IISBN {
+public abstract class AbstractIsbn extends AbstractEntity implements IISBN {
     private String value;
     private ITextContent content;
 

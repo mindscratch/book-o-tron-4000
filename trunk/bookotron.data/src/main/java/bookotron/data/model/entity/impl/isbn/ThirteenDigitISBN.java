@@ -9,5 +9,5 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "THIRTEEN_DIGIT_ISBN")
-public class ThirteenDigitISBN extends AbstractISBN {
+public class ThirteenDigitIsbn extends AbstractIsbn {
 }

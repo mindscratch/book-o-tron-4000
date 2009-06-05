@@ -5,6 +5,7 @@ import bookotron.model.entity.tag.ITag;
 import bookotron.model.entity.publisher.IPublisher;
 import bookotron.model.entity.review.IReview;
 import bookotron.model.entity.IEntity;
+import bookotron.model.entity.content.rating.IRating;
 
 import java.util.Collection;
 import java.util.Date;
@@ -14,6 +15,10 @@ import java.util.Date;
  * Time: 10:17:49 PM
  */
 public interface IContent extends IEntity {
+
+    ////////////////////////////////////////////
+    // Properties
+    /////////////////////////////////////////////
 
     String getTitle();
     void setTitle(String value);
@@ -41,4 +46,13 @@ public interface IContent extends IEntity {
 
     float getPrice();
     void setPrice(float value);
+
+    IRating getRating();
+    void setRating(IRating rating);
+
+    /////////////////////////////////////////////
+    // Behavior
+    /////////////////////////////////////////////
+//    void checkout();               //TODO provide some sort of Checkout token
+//    void checkin();
 }

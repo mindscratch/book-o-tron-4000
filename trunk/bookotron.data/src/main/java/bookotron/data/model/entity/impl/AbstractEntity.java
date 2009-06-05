@@ -72,7 +72,7 @@ public abstract class AbstractEntity implements IEntity {
         this.modifiedBy = modifiedBy;
     }
 
-    @Column(name="DELETED")
+    @Column(name="DELETED", nullable = true)
     public boolean isDeleted() {
         return deleted;
     }

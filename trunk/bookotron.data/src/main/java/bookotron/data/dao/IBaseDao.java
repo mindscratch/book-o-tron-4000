@@ -11,7 +11,7 @@ public interface IBaseDao<T> {
 
     public void remove(T t);
 
-    public List<T> findAll(Class<T> objectClass);
+    public List<T> findAll();
 
-    public T find(Class<T> objectClass, Serializable id);
+    public T find(Serializable id);
 }

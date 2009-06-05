@@ -4,8 +4,8 @@ import bookotron.model.entity.user.IUser;
 import bookotron.model.entity.review.IReview;
 import bookotron.model.entity.comment.IComment;
 import bookotron.data.model.entity.impl.AbstractEntity;
-import bookotron.data.model.entity.impl.comment.BaseComment;
-import bookotron.data.model.entity.impl.review.BaseReview;
+import bookotron.data.model.entity.impl.comment.Comment;
+import bookotron.data.model.entity.impl.review.Review;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,7 +17,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name="USER")
-public class BaseUser extends AbstractEntity implements IUser {
+public class User extends AbstractEntity implements IUser {
     private String name;
     private String email;
     private Date lastLogin;
@@ -52,7 +52,7 @@ public class BaseUser extends AbstractEntity implements IUser {
     }
 
     @JoinColumn(name = "COMMENTS")
-    @OneToMany(targetEntity = BaseComment.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(targetEntity = Comment.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     public Collection<IComment> getComments() {
         return comments;
     }
@@ -62,7 +62,7 @@ public class BaseUser extends AbstractEntity implements IUser {
     }
 
     @JoinColumn(name = "REVIEWS")
-    @OneToMany(targetEntity = BaseReview.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(targetEntity = Review.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     public Collection<IReview> getReviews() {
         return reviews;
     }

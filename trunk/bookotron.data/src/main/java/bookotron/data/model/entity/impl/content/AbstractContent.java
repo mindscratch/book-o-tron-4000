@@ -1,15 +1,16 @@
 package bookotron.data.model.entity.impl.content;
 
 import bookotron.model.entity.content.IContent;
+import bookotron.model.entity.content.rating.IRating;
 import bookotron.model.entity.review.IReview;
 import bookotron.model.entity.publisher.IPublisher;
 import bookotron.model.entity.tag.ITag;
 import bookotron.model.entity.author.IAuthor;
 import bookotron.data.model.entity.impl.AbstractEntity;
-import bookotron.data.model.entity.impl.review.BaseReview;
-import bookotron.data.model.entity.impl.tag.BaseTag;
-import bookotron.data.model.entity.impl.author.BaseAuthor;
-import bookotron.data.model.entity.impl.publisher.BasePublisher;
+import bookotron.data.model.entity.impl.review.Review;
+import bookotron.data.model.entity.impl.tag.Tag;
+import bookotron.data.model.entity.impl.author.Author;
+import bookotron.data.model.entity.impl.publisher.Publisher;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -33,6 +34,7 @@ public abstract class AbstractContent extends AbstractEntity implements IContent
     private Collection<IReview> reviews;
     private Date acquiredDate;
     private float price;
+    private IRating rating;
 
     @Column(name="TITLE", nullable = false)
     public String getTitle() {
@@ -44,7 +46,7 @@ public abstract class AbstractContent extends AbstractEntity implements IContent
     }
 
     @JoinColumn(name="AUTHORS", nullable = false)
-    @ManyToMany(targetEntity = BaseAuthor.class, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToMany(targetEntity = Author.class, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     public Collection<IAuthor> getAuthors() {
         return authors;
     }
@@ -63,7 +65,7 @@ public abstract class AbstractContent extends AbstractEntity implements IContent
     }
 
     @JoinColumn(name="TAGS")
-    @ManyToMany(targetEntity = BaseTag.class, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToMany(targetEntity = Tag.class, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     public Collection<ITag> getTags() {
         return tags;
     }
@@ -73,7 +75,7 @@ public abstract class AbstractContent extends AbstractEntity implements IContent
     }
 
     @JoinColumn(name="PUBLISHER")
-    @ManyToOne(targetEntity = BasePublisher.class, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToOne(targetEntity = Publisher.class, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     public IPublisher getPublisher() {
         return publisher;
     }
@@ -92,7 +94,7 @@ public abstract class AbstractContent extends AbstractEntity implements IContent
     }
 
     @JoinColumn(name="REVIEWS")
-    @ManyToMany(targetEntity = BaseReview.class, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Review.class, cascade = CascadeType.ALL)
     public Collection<IReview> getReviews() {
         return reviews;
     }
@@ -117,5 +119,14 @@ public abstract class AbstractContent extends AbstractEntity implements IContent
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    @Column(name="RATING")
+    public IRating getRating() {
+        return rating;
+    }
+
+    public void setRating(IRating rating) {
+        this.rating = rating;
     }
 }

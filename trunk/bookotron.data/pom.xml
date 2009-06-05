@@ -124,12 +124,20 @@
                 </includes>
             </resource>
         </resources>
+        
         <testResources>
             <testResource>
-                <filtering>true</filtering>
-                <directory>${basedir}/src/main/resources</directory>
+                <directory>src/test/resources</directory>
                 <includes>
-                    <include>**/*</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </testResource>
+            <testResource>
+                <filtering>true</filtering>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
                 </includes>
             </testResource>
         </testResources>
@@ -157,7 +165,7 @@
 					</components>
 					<componentProperties>
 						<implementation>jpaconfiguration</implementation>
-						<persistenceunit>book-o-tron-persistence-unit</persistenceunit>
+						<persistenceunit>botPersistenceUnit</persistenceunit>
                         <jdk5>true</jdk5>
 						<outputfilename>book-o-tron-schema.ddl</outputfilename>
 						<propertyfile>${basedir}/src/main/resources/database.properties</propertyfile>
@@ -186,8 +194,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
         </plugins>
