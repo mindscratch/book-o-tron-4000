@@ -6,13 +6,14 @@ import bookotron.data.model.entity.impl.content.AbstractContent;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Date: May 21, 2009
  * Time: 10:16:20 PM
  */
 @Entity
-@MappedSuperclass
+@Table(name="BASE_TEXT_CONTENT")
 public abstract class AbstractTextContent extends AbstractContent implements ITextContent {
     private int numPages;
 

@@ -26,6 +26,11 @@ public class BaseDao<T> implements IBaseDao<T> {
         initTableName();
     }
 
+    /**
+     * By allowing the class type be passed in, this dao can be created via Spring without the need to create a bunch
+     * of classes which simply extend BaseDao and provide a type via annotations.
+     * @param persistentClass
+     */
     public BaseDao(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
         initTableName();

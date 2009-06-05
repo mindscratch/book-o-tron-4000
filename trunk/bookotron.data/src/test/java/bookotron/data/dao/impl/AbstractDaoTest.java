@@ -32,6 +32,9 @@ import bookotron.data.dao.IBaseDao;
 //transaction it creates.
 @TransactionConfiguration(defaultRollback=true)
 @ContextConfiguration(locations = {"classpath:test-context.xml"})
+/**
+ * An abstract class which provides support for other DAO tests
+ */
 public abstract class AbstractDaoTest<T> extends AbstractTransactionalDataSourceSpringContextTests {
 
     @Autowired
@@ -68,6 +71,11 @@ public abstract class AbstractDaoTest<T> extends AbstractTransactionalDataSource
         return new FlatXmlDataSet(s);//new File("bookotron.data/src/test/resources/dbunit-test-data/AuthorDaoTestData.xml"));
     }
 
+    /**
+     * Returns the path to the DBUnit test data, by default it uses the name of the class with the suffix "data".
+     * 
+     * @return
+     */
     protected String getTestDataLocation() {
         return "dbunit-test-data/" + getClass().getSimpleName() + "Data.xml";
     }
