@@ -14,7 +14,8 @@ import java.util.Collection;
  */
 @Entity
 @Table(name="AUTHOR")
-public class BaseAuthor extends AbstractEntity implements IAuthor {
+@NamedQuery(name="Author.findAll", query = "SELECT A FROM Author A")
+public class Author extends AbstractEntity implements IAuthor {
 
     private String firstName;
     private String lastName;

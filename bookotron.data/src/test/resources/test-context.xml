@@ -5,6 +5,11 @@
 
     <import resource="classpath:bookotron-data.xml" />
 
-    <bean id="authorDao" class="bookotron.data.dao.impl.AuthorDao" />
+    <bean id="authorDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.author.Author</value>
+        </constructor-arg>
+    </bean>
+
 
 </beans>

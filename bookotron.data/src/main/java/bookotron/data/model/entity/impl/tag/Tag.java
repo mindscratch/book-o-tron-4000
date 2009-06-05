@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "TAG")
-public class BaseTag extends AbstractEntity implements ITag {
+public class Tag extends AbstractEntity implements ITag {
     private String name;
     private String value;
     private Collection<IContent> content;

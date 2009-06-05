@@ -1,4 +1,4 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-    <AUTHOR FIRST_NAME="Jack" LAST_NAME="Smith" />
+    <AUTHOR FIRST_NAME="Jack" LAST_NAME="Smith" DELETED="false"/>
 </dataset>

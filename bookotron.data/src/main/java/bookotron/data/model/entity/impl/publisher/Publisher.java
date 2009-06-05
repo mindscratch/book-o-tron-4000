@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "PUBLISHER")
-public class BasePublisher extends AbstractEntity implements IPublisher {
+public class Publisher extends AbstractEntity implements IPublisher {
     private String name;
     private String website;
     private Collection<IContent> content;

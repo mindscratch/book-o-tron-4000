@@ -13,7 +13,7 @@ import javax.persistence.Column;
  */
 @Entity
 @Table(name = "PDF")
-public class BasePDFTextContent extends AbstractTextContent implements IPDFTextContent {
+public class PdfTextContent extends AbstractTextContent implements IPDFTextContent {
 
     private long fileSize;
 
