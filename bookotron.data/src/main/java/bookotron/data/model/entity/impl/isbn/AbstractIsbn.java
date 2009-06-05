@@ -12,7 +12,7 @@ import javax.persistence.*;
  * Time: 10:22:04 PM
  */
 @Entity
-@MappedSuperclass
+@Table(name="BASE_ISBN")
 public abstract class AbstractIsbn extends AbstractEntity implements IISBN {
     private String value;
     private ITextContent content;

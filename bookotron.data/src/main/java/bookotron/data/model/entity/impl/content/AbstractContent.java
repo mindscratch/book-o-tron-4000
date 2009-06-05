@@ -22,7 +22,7 @@ import java.util.Date;
  */
 
 @Entity
-@MappedSuperclass
+@Table(name = "BASE_CONTENT")
 public abstract class AbstractContent extends AbstractEntity implements IContent {
 
     private String title;
