@@ -7,5 +7,6 @@
 		<dir name="${bookotron.project.root}/bookotron.resource/target/classes" />
 		<dir name="${bookotron.project.root}/bookotron.service/target/classes" />
 		<dir name="${bookotron.project.root}/bookotron.data/target/classes" />
+		<dir name="${bookotron.project.root}/bookotron.model/target/classes" />
 	</classpath>
 </application>
