@@ -7,12 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 /**
  * Date: May 21, 2009
  * Time: 10:17:28 PM
  */
 @Entity
 @Table(name = "PDF")
+@XStreamAlias("PdfBook")
 public class PdfTextContent extends AbstractTextContent implements IPDFTextContent {
 
     private long fileSize;

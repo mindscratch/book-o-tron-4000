@@ -16,7 +16,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @Entity
 @Table(name="BOOK")
-@XStreamAlias("Book")
+@XStreamAlias("TextBook")
 public class BookTextContent extends AbstractTextContent implements IBookTextContent {
 
     private Collection<IISBN> isbns;
