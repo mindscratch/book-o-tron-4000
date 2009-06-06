@@ -13,10 +13,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import bookotron.data.model.entity.impl.content.text.book.BookTextContent;
+import bookotron.data.model.entity.impl.content.text.pdf.PdfTextContent;
 import bookotron.service.BookService;
 
 
@@ -29,35 +29,77 @@ public class BookResource {
 	@Autowired
 	BookService bookService;
 	
+	
 	@GET
-	@Path("/{id}")
+	@Path("/text/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response getBook(@PathParam("id") String id) throws URISyntaxException {
+    public Response getTextBook(@PathParam("id") String id) throws URISyntaxException {
 		
-		BookTextContent book = bookService.getBook(Long.valueOf(id));
+		BookTextContent book = bookService.getTextBook(Long.valueOf(id));
+		return Response.ok().entity(book).build();
+    }
+	
+	
+	@GET
+	@Path("/pdf/{id}")
+	@Produces(MediaType.APPLICATION_XML)
+    public Response getPdfBook(@PathParam("id") String id) throws URISyntaxException {
+		
+		PdfTextContent book = bookService.getPdfBook(Long.valueOf(id));
 		return Response.ok().entity(book).build();
     }
 	
 	
 	@POST
+	@Path("/text")
 	@Produces(MediaType.APPLICATION_XML)
-	public Response createBook(BookTextContent book) {
+	public Response createTextBook(BookTextContent book) {
 		
-		return Response.ok().entity(book).build();
+		BookTextContent result = bookService.createTextBook(book);
+		return Response.ok().entity(result).build();
 	}
 	
-	@PUT
-	@Path("/{id}")
+	
+	@POST
+	@Path("/pdf")
 	@Produces(MediaType.APPLICATION_XML)
-	public Response updateBook(@PathParam("id") String id, BookTextContent book) {
+	public Response createPdfBook(PdfTextContent book) {
+		PdfTextContent result = bookService.createPdfBook(book);
+		return Response.ok().entity(result).build();
+	}
+	
+	
+	@PUT
+	@Path("/text/{id}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Response updateTextBook(@PathParam("id") String id, BookTextContent book) {
 		
-		return Response.ok().entity(book).build();
+		BookTextContent result = bookService.updateTextBook(Long.valueOf(id), book);
+		return Response.ok().entity(result).build();
+	}
+	
+	
+	@PUT
+	@Path("/pdf/{id}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Response updatePdfBook(@PathParam("id") String id, PdfTextContent book) {
+		PdfTextContent result = bookService.updatePdfBook(Long.valueOf(id), book);
+		return Response.ok().entity(result).build();
 	}
 	
 	
 	@DELETE
-	@Path("/{id}")
-	public Response deleteBook(@PathParam("id") String id) {
+	@Path("/text/{id}")
+	public Response deleteTextBook(@PathParam("id") String id) {
+		bookService.deleteTextBook(Long.valueOf(id));
+		return Response.ok().build();
+	}
+	
+	
+	@DELETE
+	@Path("/pdf/{id}")
+	public Response deletePdfBook(@PathParam("id") String id) {
+		bookService.deleteTextBook(Long.valueOf(id));
 		return Response.ok().build();
 	}
 }
