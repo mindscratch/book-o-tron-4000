@@ -73,7 +73,7 @@
 	</pluginRepositories>
 
 	<properties>
-		<spring.version>2.5.6</spring.version>
+		<spring.version>2.5.5</spring.version>
 		<ui.swf.name>ui</ui.swf.name>
         <bookotron.version>1.0-SNAPSHOT</bookotron.version>
 
