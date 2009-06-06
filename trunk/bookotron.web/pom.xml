@@ -12,6 +12,7 @@
 	<artifactId>web</artifactId>
 	<packaging>war</packaging>
 	<name>BOOK-O-TRON :: Web</name>
+	<version>1.0-SNAPSHOT</version>
 	<url>http://maven.apache.org</url>
 	<build>
 		<finalName>bookotron</finalName>
