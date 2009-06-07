@@ -32,13 +32,3 @@ IBaseDao<IAuthor> dao = new BaseDao(Author.class);
 The _[http://code.google.com/p/book-o-tron-4000/source/browse/trunk/bookotron.data/src/main/java/bookotron/data/dao/impl/BaseDao.java BaseDao]_ class creates a [http://java.sun.com/javaee/5/docs/api/javax/persistence/Query.html Query] used in the implementation of the _findAll_ method.
 
 It will first look for a [http://java.sun.com/javaee/5/docs/api/javax/persistence/NamedQuery.html NamedQuery] whose _name_ ends with "findAll" (case insensitive).  If it can't find that it will create a query based on the table name.
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
