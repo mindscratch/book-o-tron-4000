@@ -1,4 +1,4 @@
-#This page describes some conventions used in the data layer.
+This page describes some conventions used in the data layer.
 
 = Testing =
 The testing in the data layer makes use of DbUnit and XML files for testing purposes.  There is an abstract class, _[http://code.google.com/p/book-o-tron-4000/source/browse/trunk/bookotron.data/src/test/java/bookotron/data/dao/impl/AbstractDaoTest.java AbstractDaoTest.java]_ which handles setting up the database specifics for testing.
