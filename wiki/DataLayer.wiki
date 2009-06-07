@@ -1,9 +1,9 @@
 This page describes some conventions used in the data layer.
 
 = Testing =
-The testing in the data layer makes use of DbUnit and XML files for testing purposes.  There is an abstract class, _[http://code.google.com/p/book-o-tron-4000/source/browse/trunk/bookotron.data/src/test/java/bookotron/data/dao/impl/AbstractDaoTest.java AbstractDaoTest.java]_ which handles setting up the database specifics for testing.
+The testing in the data layer makes use of DbUnit and XML files for testing purposes.  There is an abstract class, _[http://code.google.com/p/book-o-tron-4000/source/browse/trunk/bookotron.data/src/test/java/bookotron/data/dao/impl/AbstractDaoTest.java AbstractDaoTest.java]_ which handles setting up the database for testing.
 
-By convention, it looks in _src\test\resources\dbunit-test-data\_ for an XML file is named after the unit test class and appended with _Data.xml_.
+By convention, it looks in _src\test\resources\dbunit-test-data\_ for an XML file which is named after the unit test class and appended with _Data.xml_.
 
 For example if a test class is named _AuthorDaoTest_ then a data file should exist in _src\test\resources\dbunit-test-data_ with the name _AuthorDaoTestData.xml_.
 
