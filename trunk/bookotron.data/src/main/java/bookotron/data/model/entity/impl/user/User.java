@@ -3,7 +3,11 @@ package bookotron.data.model.entity.impl.user;
 import bookotron.model.entity.user.IUser;
 import bookotron.model.entity.review.IReview;
 import bookotron.model.entity.comment.IComment;
+import bookotron.model.entity.rental.ICheckOut;
+import bookotron.model.entity.rental.ICheckOutReceipt;
 import bookotron.data.model.entity.impl.AbstractEntity;
+import bookotron.data.model.entity.impl.rental.CheckOut;
+import bookotron.data.model.entity.impl.rental.CheckOutReceipt;
 import bookotron.data.model.entity.impl.comment.Comment;
 import bookotron.data.model.entity.impl.review.Review;
 
@@ -27,6 +31,7 @@ public class User extends AbstractEntity implements IUser {
     private Date lastLogin;
     private Collection<IComment> comments;
     private Collection<IReview> reviews;
+    private Collection<ICheckOutReceipt> checkOutReceipts;
 
     @Column(name="NAME", nullable = false)
     public String getName() {
@@ -73,5 +78,15 @@ public class User extends AbstractEntity implements IUser {
 
     public void setReviews(Collection<IReview> reviews) {
         this.reviews = reviews;
+    }
+
+    @JoinColumn(name = "CHECK_OUT_RECEIPTS")
+    @OneToMany(targetEntity = CheckOutReceipt.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    public Collection<ICheckOutReceipt> getCheckOutReceipts() {
+        return checkOutReceipts;
+    }
+
+    public void setCheckOutReceipts(Collection<ICheckOutReceipt> checkOutReceipts) {
+        this.checkOutReceipts = checkOutReceipts;
     }
 }

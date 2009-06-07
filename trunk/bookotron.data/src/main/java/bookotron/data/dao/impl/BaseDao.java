@@ -1,6 +1,7 @@
 package bookotron.data.dao.impl;
 
 import bookotron.data.dao.IBaseDao;
+import bookotron.model.entity.IEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 @Repository  // this provides Spring's exception translation
-public class BaseDao<T> implements IBaseDao<T> {
+public class BaseDao<T extends IEntity> implements IBaseDao<T> {
 
     // http://static.springframework.org/spring/docs/2.5.x/reference/orm.html#orm-jpa-straight
     @PersistenceContext
@@ -67,7 +68,7 @@ public class BaseDao<T> implements IBaseDao<T> {
         }
 
         if (findAll == null) {
-            findAll = em.createQuery("SELECT X FROM " + tableName + " X");
+            findAll = em.createQuery("SELECT X FROM " + persistentClass.getClass().getName() + " X WHERE deleted = false");
         }
     }
 
@@ -84,7 +85,10 @@ public class BaseDao<T> implements IBaseDao<T> {
 
     @Transactional
     public void remove(T t) {
-        em.remove(t);
+        if (t != null) {
+            t.setDeleted(true);
+            update(t);
+        }
     }
 
     @Transactional

@@ -1,9 +1,11 @@
 package bookotron.data.dao.impl;
 
 import bookotron.data.dao.IBaseDao;
+import bookotron.model.entity.IEntity;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.CompositeDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.After;
@@ -19,7 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.io.InputStream;
+import java.io.File;
 import java.sql.Connection;
+import java.util.List;
+import java.util.ArrayList;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //This annotation tells Spring that we want each method in this class to be
@@ -34,19 +39,10 @@ import java.sql.Connection;
 /**
  * An abstract class which provides support for other DAO tests
  */
-public abstract class AbstractDaoTest<T> extends AbstractTransactionalDataSourceSpringContextTests {
-
-    @Autowired
-    protected IBaseDao<T> dao;
+public abstract class AbstractDaoTest extends AbstractTransactionalDataSourceSpringContextTests {
 
     @Autowired
     protected DataSource dbDataSource;
-
-    @Override
-    protected void onSetUp() throws Exception {
-        super.onSetUp();
-        assertNotNull(dao);
-    }
 
     @Before
     public void init() throws Exception {
@@ -65,17 +61,46 @@ public abstract class AbstractDaoTest<T> extends AbstractTransactionalDataSource
     }
 
     private IDataSet getDataSet() throws Exception {
-        InputStream s = getClass().getClassLoader().getResourceAsStream(getTestDataLocation());
+        final ClassLoader cl = getClass().getClassLoader();
+        final List<String> dataLocations = getTestDataLocations();
+        final List<IDataSet> dataSets = new ArrayList<IDataSet>();
 
-        return new FlatXmlDataSet(s);//new File("bookotron.data/src/test/resources/dbunit-test-data/AuthorDaoTestData.xml"));
+        InputStream stream = null;
+        for (String location : dataLocations) {
+            stream = cl.getResourceAsStream(location);
+            if (stream != null) {
+                dataSets.add(new FlatXmlDataSet(stream));
+            }
+        }
+
+        return new CompositeDataSet(dataSets.toArray(new IDataSet[dataSets.size()]));
     }
 
     /**
-     * Returns the path to the DBUnit test data, by default it uses the name of the class with the suffix "data".
+     * Returns the paths to the DBUnit test data files, by default it uses the name of the class with the suffix "data".
      * 
      * @return
      */
-    protected String getTestDataLocation() {
-        return "dbunit-test-data/" + getClass().getSimpleName() + "Data.xml";
+    protected List<String> getTestDataLocations() {
+        final List<String> testClasses = getTestDataClassNames();
+        final List<String> locations = new ArrayList<String>(testClasses.size());
+
+        for (String testClassName : testClasses) {
+            locations.add("dbunit-test-data/" + testClassName + "Data.xml");
+        }
+
+        return locations;
+    }
+
+    /**
+     * Returns a list of Class names used to retrieve test data files.
+     * @return
+     */
+    protected List<String> getTestDataClassNames() {
+        final List<String> classNames = new ArrayList<String>();
+
+        classNames.add(getClass().getSimpleName());
+
+        return classNames;
     }
 }

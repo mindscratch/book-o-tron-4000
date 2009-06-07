@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Date;
 
 import bookotron.model.entity.IEntity;
+import bookotron.model.entity.rental.ICheckOut;
+import bookotron.model.entity.rental.ICheckOutReceipt;
 import bookotron.model.entity.comment.IComment;
 import bookotron.model.entity.review.IReview;
 
@@ -29,4 +31,7 @@ public interface IUser extends IEntity {
 
     Collection<IReview> getReviews();
     void setReviews(Collection<IReview> reviews);
+
+    Collection<ICheckOutReceipt> getCheckOutReceipts();
+    void setCheckOutReceipts(Collection<ICheckOutReceipt> checkOutReceipts);
 }

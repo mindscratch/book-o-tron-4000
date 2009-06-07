@@ -11,5 +11,16 @@
         </constructor-arg>
     </bean>
 
+    <bean id="bookDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.content.text.book.BookTextContent</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="checkOutReceiptDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.rental.CheckOutReceipt</value>
+        </constructor-arg>
+    </bean>
 
 </beans>
