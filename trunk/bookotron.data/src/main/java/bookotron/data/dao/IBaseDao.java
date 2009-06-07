@@ -13,5 +13,5 @@ public interface IBaseDao<T> {
 
     public List<T> findAll();
 
-    public T find(Serializable id);
+    public T find(long id);
 }

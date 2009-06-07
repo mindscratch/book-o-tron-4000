@@ -1,26 +1,25 @@
 package bookotron.data.dao.impl;
 
+import bookotron.data.dao.IBaseDao;
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.operation.DatabaseOperation;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.junit.Before;
-import org.junit.After;
-import org.junit.runner.RunWith;
-import org.dbunit.operation.DatabaseOperation;
-import org.dbunit.database.IDatabaseConnection;
-import org.dbunit.database.DatabaseConnection;
-import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
 import java.io.InputStream;
-
-import bookotron.data.dao.IBaseDao;
+import java.sql.Connection;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //This annotation tells Spring that we want each method in this class to be
@@ -56,12 +55,12 @@ public abstract class AbstractDaoTest<T> extends AbstractTransactionalDataSource
 
     @After
     public void after() throws Exception {
-        DatabaseOperation.DELETE_ALL.execute(getConnection(), getDataSet());
+       DatabaseOperation.DELETE_ALL.execute(getConnection(), getDataSet());
     }
 
     private IDatabaseConnection getConnection() throws Exception {
-        Connection con = DataSourceUtils.getConnection(dbDataSource);
-        IDatabaseConnection dbUnitCon = new DatabaseConnection(con);
+        Connection conn = DataSourceUtils.getConnection(dbDataSource);
+        IDatabaseConnection dbUnitCon = new DatabaseConnection(conn);
         return dbUnitCon;
     }
 

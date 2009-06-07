@@ -51,4 +51,29 @@ public class Author extends AbstractEntity implements IAuthor {
     public void setAuthored(Collection<IContent> authored) {
         this.authored = authored;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer(getClass().getSimpleName());
+        sb.append("={id: ");
+        sb.append(getId());
+        sb.append(", firstName: ");
+        sb.append(getFirstName());
+        sb.append(", lastName: ");
+        sb.append(getLastName());
+        sb.append(", content: [");
+        if (authored != null && authored.size() > 0) {
+            for (IContent item : authored) {
+                sb.append(item.getClass().getSimpleName());
+                sb.append("={id: ");
+                sb.append(item.getId());
+                sb.append(", title: ");
+                sb.append(item.getTitle());
+            }
+        }
+        sb.append("], addDate: ");
+        sb.append(getAddDate());
+        sb.append("}");
+        return sb.toString();
+    }
 }
