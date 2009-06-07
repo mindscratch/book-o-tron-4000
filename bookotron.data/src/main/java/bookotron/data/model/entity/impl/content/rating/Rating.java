@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 @Entity
 @Table(name="RATING")
+@XStreamAlias("Rating")
 public class Rating extends AbstractEntity implements IRating {
 
     private float value;

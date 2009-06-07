@@ -8,6 +8,9 @@ import bookotron.data.model.entity.impl.comment.Comment;
 import bookotron.data.model.entity.impl.review.Review;
 
 import javax.persistence.*;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.util.Date;
 import java.util.Collection;
 
@@ -17,6 +20,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name="USER")
+@XStreamAlias("User")
 public class User extends AbstractEntity implements IUser {
     private String name;
     private String email;

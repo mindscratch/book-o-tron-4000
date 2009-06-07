@@ -9,9 +9,11 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
+import javax.ws.rs.ext.Provider;
 
 import com.thoughtworks.xstream.XStream;
 
+@Provider
 public class XStreamMessageBodyReader implements MessageBodyReader<Object> {
 
 	private final XStream xstream = new XStream();

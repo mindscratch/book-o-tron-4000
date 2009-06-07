@@ -9,10 +9,14 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
+import javax.ws.rs.ext.Provider;
 
+import com.sun.jersey.spi.resource.Singleton;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
+@Provider
+@Singleton
 public class JSONMessageBodyReader implements MessageBodyReader<Object> {
 
 	XStream xstream = new XStream(new JettisonMappedXmlDriver());

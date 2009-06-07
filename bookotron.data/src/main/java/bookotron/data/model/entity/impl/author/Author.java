@@ -6,6 +6,9 @@ import bookotron.data.model.entity.impl.AbstractEntity;
 import bookotron.data.model.entity.impl.content.AbstractContent;
 
 import javax.persistence.*;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.util.Collection;
 
 /**
@@ -15,6 +18,7 @@ import java.util.Collection;
 @Entity
 @Table(name="AUTHOR")
 @NamedQuery(name="Author.findAll", query = "SELECT A FROM Author A")
+@XStreamAlias("Author")
 public class Author extends AbstractEntity implements IAuthor {
 
     private String firstName;

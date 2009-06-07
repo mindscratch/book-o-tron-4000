@@ -6,6 +6,9 @@ import bookotron.data.model.entity.impl.AbstractEntity;
 import bookotron.data.model.entity.impl.content.AbstractContent;
 
 import javax.persistence.*;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.util.Collection;
 
 /**
@@ -14,6 +17,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "PUBLISHER")
+@XStreamAlias("Publisher")
 public class Publisher extends AbstractEntity implements IPublisher {
     private String name;
     private String website;
