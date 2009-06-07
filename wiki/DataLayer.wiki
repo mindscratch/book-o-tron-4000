@@ -5,7 +5,7 @@ The testing in the data layer makes use of DbUnit and XML files for testing purp
 
 By convention, it looks in _src\test\resources\dbunit-test-data\_ for an XML file which is named after the unit test class and appended with _Data.xml_.
 
-For example if a test class is named _AuthorDaoTest_ then a data file should exist in _src\test\resources\dbunit-test-data_ with the name _AuthorDaoTestData.xml_. This behavior can be changed by having a subclass override the following method:
+For example if a test class is named _AuthorDaoTest_ then a data file should exist in _src\test\resources\dbunit-test-data_ with the name _AuthorDaoTestData.xml_. This behavior can be changed by having a subclass of _AbstractDaoTest_ override the following method:
 {{{
 protected String getTestDataLocation() { ... }
 }}}
