@@ -9,7 +9,7 @@ public interface PublisherService {
 	
 	public Publisher createPublisher(Publisher newPublisher);
 	
-	public Publisher updatePublisher(Long id, Publisher updatedPublisher);
+	public Publisher updatePublisher(Long id, Publisher publisher);
 	
 	public Boolean deletePublisher(Long id);
 }

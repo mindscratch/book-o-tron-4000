@@ -13,44 +13,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bookotron.data.model.entity.impl.comment.Comment;
+import bookotron.model.error.Error;
 import bookotron.service.CommentService;
 
 @Component
 @Path("/comment")
 public class CommentResource {
 
-	
 	CommentService commentService;
-	
-	
+
 	@Autowired
 	public CommentResource(CommentService commentService) {
 		this.commentService = commentService;
 	}
-	
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response getComment(@PathParam("id") String id) {
-		Comment comment = commentService.getComment(Long.valueOf(id));
-		return Response.ok().entity(comment).build();
-    }
-	
-	
+	public Response getComment(@PathParam("id") String id) {
+		Response resultResponse;
+		try {
+			Comment comment = commentService.getComment(Long.valueOf(id));
+			resultResponse = Response.ok().entity(comment).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
+	}
+
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response updateComment(@PathParam("id") String id, Comment comment) {
-		Comment updatedComment = commentService.updateComment(Long.valueOf(id), comment);
-		return Response.ok(updatedComment).build();
+	public Response updateComment(@PathParam("id") String id, Comment comment) {
+		Response resultResponse;
+		try {
+			Comment updatedComment = commentService.updateComment(Long
+					.valueOf(id), comment);
+			resultResponse = Response.ok(updatedComment).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
 	}
-	
-	
+
 	@DELETE
 	@Path("/{id}")
 	public Response deleteComment(@PathParam("id") String id) {
-		commentService.deleteComment(Long.valueOf(id));
-		return Response.ok().build();
+		Response resultResponse;
+		try {
+			commentService.deleteComment(Long.valueOf(id));
+			resultResponse = Response.ok().build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
 	}
 }

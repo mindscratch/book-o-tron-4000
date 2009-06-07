@@ -6,7 +6,7 @@ public interface TagService {
 
 	public Tag getTag(Long id);
 	
-	public Tag updateTag(Long id, Tag updatedTag);
+	public Tag updateTag(Long id, Tag tag);
 	
 	public Boolean deleteTag(Long id);
 }

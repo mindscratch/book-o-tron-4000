@@ -14,55 +14,77 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bookotron.data.model.entity.impl.user.User;
+import bookotron.model.error.Error;
 import bookotron.service.UserService;
 
 @Component
 @Path("/user")
 public class UserResource {
-	
-	
+
 	UserService userService;
-	
-	
+
 	@Autowired
 	public UserResource(UserService userService) {
 		this.userService = userService;
 	}
-	
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	public Response createUser(User user) {
-		
-		User result = userService.createUser(user);
-		return Response.ok().entity(result).build();
+		Response resultResponse;
+		try {
+			User result = userService.createUser(user);
+			resultResponse = Response.ok().entity(result).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
 	}
-	
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response getUser(@PathParam("id") String id) {
-		User result = userService.getUser(Long.valueOf(id));
-		return Response.ok(result).build();
-    }
-	
-	
+	public Response getUser(@PathParam("id") String id) {
+		Response resultResponse;
+		try {
+			User result = userService.getUser(Long.valueOf(id));
+			resultResponse = Response.ok(result).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
+	}
+
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response updateUser(@PathParam("id") String id, User user) {
-		User result = userService.updateUser(Long.valueOf(id), user);
-		return Response.ok(result).build();
-    }
-	
-	
+	public Response updateUser(@PathParam("id") String id, User user) {
+		Response resultResponse;
+		try {
+			User result = userService.updateUser(Long.valueOf(id), user);
+			resultResponse = Response.ok(result).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
+	}
+
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public Response deleteUser(@PathParam("id") String id) {
-		userService.deleteUser(Long.valueOf(id));
-		return Response.ok().build();
+		Response resultResponse;
+		try {
+			userService.deleteUser(Long.valueOf(id));
+			resultResponse = Response.ok().build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
 	}
 
 }

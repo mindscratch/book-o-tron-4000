@@ -21,4 +21,8 @@ public interface BookService {
 	
 	public Boolean deletePdfBook(Long id);
 	
+	public Boolean checkOutPdfBook(Long bookId, Long userId);
+	
+	public Boolean checkOutTextBook(Long bookId, Long userId);
+	
 }
