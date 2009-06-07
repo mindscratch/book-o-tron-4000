@@ -1,6 +1,6 @@
 package bookotron.resource.rest;
 
-import java.net.URISyntaxException;
+import java.util.Date;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,22 +20,27 @@ import bookotron.data.model.entity.impl.content.text.pdf.PdfTextContent;
 import bookotron.service.BookService;
 
 
-
-
 @Component
 @Path("/book")
 public class BookResource {
 
-	@Autowired
 	BookService bookService;
 	
+	
+	@Autowired
+	public BookResource(BookService bookService) {
+		this.bookService = bookService;
+	}
 	
 	@GET
 	@Path("/text/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response getTextBook(@PathParam("id") String id) throws URISyntaxException {
+    public Response getTextBook(@PathParam("id") String id) {
 		
 		BookTextContent book = bookService.getTextBook(Long.valueOf(id));
+		book.setAcquiredDate(new Date());
+		book.setDeleted(false);
+		book.setEdition("new edition");
 		return Response.ok().entity(book).build();
     }
 	
@@ -43,7 +48,7 @@ public class BookResource {
 	@GET
 	@Path("/pdf/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response getPdfBook(@PathParam("id") String id) throws URISyntaxException {
+    public Response getPdfBook(@PathParam("id") String id) {
 		
 		PdfTextContent book = bookService.getPdfBook(Long.valueOf(id));
 		return Response.ok().entity(book).build();

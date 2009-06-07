@@ -10,6 +10,9 @@ import bookotron.data.model.entity.impl.content.AbstractContent;
 import bookotron.data.model.entity.impl.user.User;
 
 import javax.persistence.*;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.util.Collection;
 
 /**
@@ -18,6 +21,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "REVIEW")
+@XStreamAlias("Review")
 public class Review extends AbstractEntity implements IReview {
 
     private IUser user;

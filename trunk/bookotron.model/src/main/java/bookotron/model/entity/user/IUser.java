@@ -1,11 +1,11 @@
 package bookotron.model.entity.user;
 
-import bookotron.model.entity.IEntity;
-import bookotron.model.entity.review.IReview;
-import bookotron.model.entity.comment.IComment;
-
-import java.util.Date;
 import java.util.Collection;
+import java.util.Date;
+
+import bookotron.model.entity.IEntity;
+import bookotron.model.entity.comment.IComment;
+import bookotron.model.entity.review.IReview;
 
 /**
  * A user is someone who uses the application to add books, checkout books, update book details, etc.

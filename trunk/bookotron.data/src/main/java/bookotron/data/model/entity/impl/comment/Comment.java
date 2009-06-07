@@ -8,12 +8,15 @@ import bookotron.data.model.entity.impl.review.Review;
 
 import javax.persistence.*;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 /**
  * Date: May 21, 2009
  * Time: 10:11:05 PM
  */
 @Entity
 @Table(name="COMMENT")
+@XStreamAlias("Comment")
 public class Comment extends AbstractEntity implements IComment {
     private IUser user;
     private IReview review;
