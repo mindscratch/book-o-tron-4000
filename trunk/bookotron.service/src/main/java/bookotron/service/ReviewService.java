@@ -6,7 +6,7 @@ public interface ReviewService {
 
 	public Review getReview(Long id);
 	
-	public Review updateReview(Long id, Review updatedReview);
+	public Review updateReview(Long id, Review review);
 	
 	public Boolean deleteReview(Long id);
 	

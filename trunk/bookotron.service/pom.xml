@@ -20,6 +20,12 @@
   	<dependency>
   		<groupId>bookotron</groupId>
   		<artifactId>data</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>bookotron</groupId>
+  		<artifactId>model</artifactId>
+  		<version>1.0-SNAPSHOT</version>
   	</dependency>
   </dependencies>
 </project>

@@ -12,4 +12,54 @@
 	<context:component-scan base-package="bookotron.service" />
 
 
+	<bean id="authorDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.author.Author</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="bookTextDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.content.text.book.BookTextContent</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="bookPdfDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.content.text.pdf.PdfTextContent</value>
+        </constructor-arg>
+    </bean>
+    
+    
+    <bean id="commentDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.comment.Comment</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="publisherDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.publisher.Publisher</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="reviewDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.review.Review</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="tagDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.tag.Tag</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="userDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.user.User</value>
+        </constructor-arg>
+    </bean>
+    
+
 </beans>

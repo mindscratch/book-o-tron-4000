@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bookotron.data.model.entity.impl.author.Author;
+import bookotron.model.error.Error;
 import bookotron.service.AuthorService;
 
 @Component
@@ -21,48 +22,68 @@ import bookotron.service.AuthorService;
 public class AuthorResource {
 
 	private AuthorService authorService;
-	
-	
+
 	@Autowired
 	public AuthorResource(AuthorService authorService) {
 		this.authorService = authorService;
 	}
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	public Response createAuthor(Author author) {
-		
-		Author result = authorService.createAuthor(author);
-		return Response.ok().entity(result).build();
+		Response resultResponse;
+		try {
+			Author result = authorService.createAuthor(author);
+			resultResponse = Response.ok().entity(result).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
 	}
-	
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response getAuthor(@PathParam("id") String id) {
-		Author author = authorService.getAuthor(Long.valueOf(id));
-		return Response.ok().entity(author).build();
-    }
-	
-	
+	public Response getAuthor(@PathParam("id") String id) {
+		Response resultResponse;
+		try {
+			Author author = authorService.getAuthor(Long.valueOf(id));
+			resultResponse = Response.ok().entity(author).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
+	}
+
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-    public Response updateAuthor(@PathParam("id") String id, Author author) {
-		Author updatedAuthor = authorService.updateAuthor(Long.valueOf(id), author);
-		return Response.ok().entity(updatedAuthor).build();
-    }
-	
-	
+	public Response updateAuthor(@PathParam("id") String id, Author author) {
+		Response resultResponse;
+		try {
+			Author updatedAuthor = authorService.updateAuthor(Long.valueOf(id),author);
+			resultResponse = Response.ok().entity(updatedAuthor).build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
+	}
+
 	@DELETE
 	@Path("/{id}")
 	public Response deleteAuthor(@PathParam("id") String id) {
-		authorService.deleteAuthor(Long.valueOf(id));
-		return Response.ok().build();
+		Response resultResponse;
+		try {
+			authorService.deleteAuthor(Long.valueOf(id));
+			resultResponse = Response.ok().build();
+		} catch (Exception e) {
+			Error error = new Error("Server error...");
+			resultResponse = Response.serverError().entity(error).build();
+		}
+		return resultResponse;
 	}
-	
-	
-	
-	
+
 }
