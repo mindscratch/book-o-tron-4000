@@ -9,8 +9,8 @@
     <AUTHOR ID="1" FIRST_NAME="Jack" LAST_NAME="Smith" DELETED="false" ADD_DATE="2009-06-05"/>
 
     <!-- BASE_CONTENT -->
-    <BASE_CONTENT ID="1" TITLE="Groovy in Action" DESCRIPTION="A book about Groovy." PRICE="19.95" RATING="1" DELETED="false"/>
-    <BASE_CONTENT ID="2" TITLE="JavaFX RefCard" DESCRIPTION="A RefCard from DZone about JavaFX." PRICE="0" RATING="2" DELETED="false"/>
+    <BASE_CONTENT ID="1" TITLE="Groovy in Action" DESCRIPTION="A book about Groovy." PRICE="19.95" RATING="1" DELETED="false" PUB_DATE="2008-01-03"/>
+    <BASE_CONTENT ID="2" TITLE="JavaFX RefCard" DESCRIPTION="A RefCard from DZone about JavaFX." PRICE="0" RATING="2" DELETED="false" PUB_DATE="2008-05-02"/>
 
     <!-- BASE_TEXT_CONTENT -->
     <BASE_TEXT_CONTENT ID="1" NUM_PAGES="330" />
@@ -29,4 +29,8 @@
     <!-- AUTHOR to CONTENT JOIN -->
     <AUTHOR_BASE_CONTENT AUTHOR_ID="1" AUTHORED_ID="1" />
     <AUTHOR_BASE_CONTENT AUTHOR_ID="1" AUTHORED_ID="2" />
+
+    <!-- BASE_CONTENT to AUTHOR JOIN -->
+    <BASE_CONTENT_AUTHOR BASE_CONTENT_ID="1" AUTHORS_ID="1" />
+    <BASE_CONTENT_AUTHOR BASE_CONTENT_ID="2" AUTHORS_ID="1" />
 </dataset>

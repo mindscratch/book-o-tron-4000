@@ -1,16 +1,24 @@
-package bookotron.data.dao.impl;
+package bookotron.data.dao.impl.author;
 
 import bookotron.data.model.entity.impl.author.Author;
+import bookotron.data.dao.IBaseDao;
+import bookotron.data.dao.impl.AbstractDaoTest;
 import bookotron.model.entity.author.IAuthor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 
-public class AuthorDaoTest extends AbstractDaoTest<IAuthor> {
+public class AuthorDaoTest extends AbstractDaoTest {
 
     private static final Log log = LogFactory.getLog(AuthorDaoTest.class);
+
+    @Autowired
+    @Qualifier("authorDao")
+    private IBaseDao<IAuthor> dao;
 
     @Test
     public void testInsert() {
@@ -70,7 +78,7 @@ public class AuthorDaoTest extends AbstractDaoTest<IAuthor> {
         dao.remove(author);
 
         author = dao.find(author.getId());
-        assertNull("Expected author to be null since it was removed, but retrieved: " + author, author);
+        assertTrue("Expected author, id=" + author.getId() + ", to have been deleted", author.isDeleted());
     }
 
     @Test

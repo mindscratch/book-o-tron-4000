@@ -5,10 +5,15 @@ import bookotron.model.entity.tag.ITag;
 import bookotron.model.entity.publisher.IPublisher;
 import bookotron.model.entity.review.IReview;
 import bookotron.model.entity.IEntity;
+import bookotron.model.entity.rental.ICheckOut;
+import bookotron.model.entity.rental.ICheckOutReceipt;
 import bookotron.model.entity.content.rating.IRating;
+import bookotron.model.exception.UnableToCheckOutException;
+import bookotron.model.exception.UnableToCheckInException;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Date: May 19, 2009
@@ -50,9 +55,23 @@ public interface IContent extends IEntity {
     IRating getRating();
     void setRating(IRating rating);
 
+    Collection<ICheckOutReceipt> getCheckOutReceipts();
+    void setCheckOutReceipts(Collection<ICheckOutReceipt> checkOuts);
+
     /////////////////////////////////////////////
     // Behavior
     /////////////////////////////////////////////
-//    void checkout();               //TODO provide some sort of Checkout token
-//    void checkin();
+    /**
+     * Checks out this content and returns the receipt.
+     *
+     * @return
+     */
+    ICheckOutReceipt checkout(ICheckOutReceipt receipt) throws UnableToCheckOutException;
+
+    /**
+     * Checks in the book and returns the updated receipt
+     * @param receipt
+     * @return
+     */
+    ICheckOutReceipt checkin(ICheckOutReceipt receipt) throws UnableToCheckInException;
 }
