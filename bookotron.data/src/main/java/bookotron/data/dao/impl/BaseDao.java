@@ -1,15 +1,12 @@
 package bookotron.data.dao.impl;
 
 import bookotron.data.dao.IBaseDao;
-
-import javax.persistence.*;
-import java.util.List;
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
-import java.lang.annotation.Annotation;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.*;
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 @Repository  // this provides Spring's exception translation
 public class BaseDao<T> implements IBaseDao<T> {
@@ -18,12 +15,18 @@ public class BaseDao<T> implements IBaseDao<T> {
     @PersistenceContext
     private EntityManager em;
 
+    // type of class being persisted
     private Class<T> persistentClass;
+
+    // the name of the table for the entity
     private String tableName;
+
+    // findAll query
+    private Query findAll;
 
     public BaseDao() {
         persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        initTableName();
+        init();
     }
 
     /**
@@ -33,15 +36,39 @@ public class BaseDao<T> implements IBaseDao<T> {
      */
     public BaseDao(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
+        init();
+    }
+
+    protected void init() {
         initTableName();
     }
 
-    private void initTableName() {
+    protected void initTableName() {
         Table table = persistentClass.getAnnotation(Table.class);
         if (table == null) {
             throw new RuntimeException("Expected " + Table.class.getName() + " annotation on class " + persistentClass.getName());
         }
         tableName = table.name();
+    }
+
+    /**
+     * Creates a {@code javax.persistence.Query} used to find all instances of {@code T}.  It checks for a
+     * @{code NamedQuery} annotation whose name ends in "findAll" (case insensitive).
+     *
+     * This implementation does not support the {@code javax.persistence.NamedQueries} annotation.
+     */
+    protected void initFindAllQuery() {
+        // check for the annotation, it's used if the name ends in 'findAll' (case-insensitive)
+        final NamedQuery nq = persistentClass.getAnnotation(NamedQuery.class);
+        if (nq != null) {
+            if (nq.name() != null && nq.name().toLowerCase().endsWith("findall")) {
+                findAll = em.createNamedQuery(nq.name());
+            }
+        }
+
+        if (findAll == null) {
+            findAll = em.createQuery("SELECT X FROM " + tableName + " X");
+        }
     }
 
     @Transactional
@@ -62,11 +89,11 @@ public class BaseDao<T> implements IBaseDao<T> {
 
     @Transactional
     public List<T> findAll() {
-        NamedQuery nq = persistentClass.getAnnotation(NamedQuery.class);
-        Query q = em.createNamedQuery(nq.name());
+        if (findAll == null) {
+            initFindAllQuery();
+        }
 
-        final Query query = em.createQuery("select e from " + persistentClass.getSimpleName() + " e");
-        List results = query.getResultList(); //q.getResultList();//
+        List results = findAll.getResultList();
         if (results != null) {
             return (List<T>) results;
         }
@@ -74,7 +101,7 @@ public class BaseDao<T> implements IBaseDao<T> {
     }
 
     @Transactional
-    public T find(Serializable id) {
+    public T find(long id) {
         return em.find(persistentClass, id);
     }
 }

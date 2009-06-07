@@ -80,12 +80,12 @@
         <!-- Data Layer DataSource properties -->
         <data.ds.driver>org.hsqldb.jdbcDriver</data.ds.driver>
         <data.ds.dialect>org.hibernate.dialect.HSQLDialect</data.ds.dialect>
-        <!--
-        <data.ds.url>jdbc:hsqldb:hsql:/localhost/book-o-tron</data.ds.url>
-        -->
-        <data.ds.url>jdbc:hsqldb:file:/book-o-tron/book-o-tron-db</data.ds.url>
+        <data.ds.url>jdbc:hsqldb:file:/book-o-tron/db/book-o-tron-db</data.ds.url>
         <data.ds.username>sa</data.ds.username>
         <data.ds.password></data.ds.password>
+
+        <!-- Logging Properties -->
+        <log.data.dir>/book-o-tron/logs</log.data.dir>
 	</properties>
 
   	<dependencyManagement>

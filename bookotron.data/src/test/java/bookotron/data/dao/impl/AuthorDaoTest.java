@@ -1,41 +1,24 @@
 package bookotron.data.dao.impl;
 
-import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DataSourceUtils;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
-import org.junit.runner.RunWith;
-import org.dbunit.operation.DatabaseOperation;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
-import org.dbunit.dataset.IDataSet;
-import org.dbunit.database.DatabaseConnection;
-import org.dbunit.database.IDatabaseConnection;
-import bookotron.data.dao.IBaseDao;
 import bookotron.data.model.entity.impl.author.Author;
 import bookotron.model.entity.author.IAuthor;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Test;
 
-import javax.sql.DataSource;
-import java.io.FileInputStream;
-import java.io.File;
-import java.io.InputStream;
-import java.sql.Connection;
 import java.util.List;
 
 public class AuthorDaoTest extends AbstractDaoTest<IAuthor> {
+
+    private static final Log log = LogFactory.getLog(AuthorDaoTest.class);
+
     @Test
-    public void testSave() {
+    public void testInsert() {
         final IAuthor author = new Author();
         author.setFirstName("John");
         author.setLastName("Doe");
+
+        log.debug("Persisting: " + author);
 
         final IAuthor insertedAuthor = dao.insert(author);
         assertNotNull(insertedAuthor);
@@ -45,8 +28,58 @@ public class AuthorDaoTest extends AbstractDaoTest<IAuthor> {
     }
 
     @Test
+    public void testUpdate() {
+        // get an author to update
+        IAuthor author = dao.find(1);
+        assertNotNull("Expected to retrieve author with ID=1", author);
+
+        // change a property
+        author.setLastName("ZingZang");
+
+        // update the author
+        author = dao.update(author);
+
+        // verify the change
+        assertEquals("ZingZang", author.getLastName());
+
+        // just to make sure, get it from the DB
+        author = dao.find(author.getId());
+        assertEquals("ZingZang", author.getLastName());
+    }
+
+    @Test
     public void testFindAll() {
         List<IAuthor> authors = dao.findAll();
+
+        log.debug("Retrieved authors...");
+        if (authors != null && authors.size() > 0) {
+            for (IAuthor author : authors) {
+                log.debug("Found Author: " + author);
+            }
+        }
+
         assertEquals(1, authors.size());
+    }
+
+    @Test
+    public void testRemove() {
+        IAuthor author = dao.find(1);
+        assertNotNull("Expected to retrieve author with ID=1", author);
+
+        log.debug("Removing: " + author);
+        dao.remove(author);
+
+        author = dao.find(author.getId());
+        assertNull("Expected author to be null since it was removed, but retrieved: " + author, author);
+    }
+
+    @Test
+    public void testFind() {
+        IAuthor author = dao.find(1);
+        assertNotNull("Expected to retrieve author with ID=1", author);
+
+        final long id = 98765;
+        author = dao.find(id);
+        assertNull("Expected author to not exist with id=" + id + ", however an author was found: " + author, author);
     }
 }

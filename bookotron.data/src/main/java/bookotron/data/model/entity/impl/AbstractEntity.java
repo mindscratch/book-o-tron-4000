@@ -14,6 +14,7 @@ import java.util.Date;
  */
 
 @MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AbstractEntity implements IEntity {
 
     private long id;
