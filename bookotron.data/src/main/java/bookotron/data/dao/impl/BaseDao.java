@@ -2,6 +2,7 @@ package bookotron.data.dao.impl;
 
 import bookotron.data.dao.IBaseDao;
 import bookotron.model.entity.IEntity;
+import bookotron.model.exception.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -86,6 +87,7 @@ public class BaseDao<T extends IEntity> implements IBaseDao<T> {
     @Transactional
     public void remove(T t) {
         if (t != null) {
+            // TOOD may have to recursively iterate through the entity to setDeleted(true) all on its children
             t.setDeleted(true);
             update(t);
         }
@@ -106,6 +108,10 @@ public class BaseDao<T extends IEntity> implements IBaseDao<T> {
 
     @Transactional
     public T find(long id) {
-        return em.find(persistentClass, id);
+        final T result = em.find(persistentClass, id);
+        if (result == null) {
+            throw new EntityNotFoundException("Unable to find entity", id, persistentClass);
+        }
+        return result;
     }
 }

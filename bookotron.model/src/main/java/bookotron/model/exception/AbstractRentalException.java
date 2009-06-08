@@ -6,7 +6,7 @@ import bookotron.model.entity.rental.ICheckOut;
 /**
  * This type of exception is thrown when a problem occurs during a rental process (i.e. check-out, check-in).
  */
-public abstract class AbstractRentalException extends Exception {
+public abstract class AbstractRentalException extends RuntimeException {
 
     private ICheckOutReceipt receipt;
     private ICheckOut checkOut;
