@@ -4,6 +4,7 @@ import bookotron.data.model.entity.impl.author.Author;
 import bookotron.data.dao.IBaseDao;
 import bookotron.data.dao.impl.AbstractDaoTest;
 import bookotron.model.entity.author.IAuthor;
+import bookotron.model.exception.EntityNotFoundException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -86,8 +87,13 @@ public class AuthorDaoTest extends AbstractDaoTest {
         IAuthor author = dao.find(1);
         assertNotNull("Expected to retrieve author with ID=1", author);
 
+
+    }
+
+    @Test(expected = EntityNotFoundException.class)
+    public void testFindNonExistantAuthor() {
         final long id = 98765;
-        author = dao.find(id);
+        final IAuthor author = dao.find(id);
         assertNull("Expected author to not exist with id=" + id + ", however an author was found: " + author, author);
     }
 }

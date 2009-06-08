@@ -58,8 +58,35 @@ public class BookDaoTest extends AbstractDaoTest {
         assertEquals("Expected the book to no longer be checked out", 0, book.getCheckOutReceipts().size());
     }
 
+    /**
+     * Verify a single book can not be checked out twice on the same receipt
+     */
+    @Test(expected = UnableToCheckOutException.class)
+    public void testDuplicateCheckOutAttempt() {
+        IBookTextContent book = bookDao.find(1);
+        ICheckOutReceipt receipt = checkOutBook(book);
+
+        // try to add the same book to the receipt again
+        receipt = book.checkout(receipt);
+    }
+
+    /**
+     * Verify a book can not be checked out more than once
+     */
+    @Test(expected = UnableToCheckOutException.class)
+    public void testAlreadyCheckedOut() {
+        IBookTextContent book = bookDao.find(1);
+        ICheckOutReceipt receipt = checkOutBook(book);
+
+        // save the book and its checkout
+        book = bookDao.update(book);
+
+        // try to re-checkout the book
+        checkOutBook(book);
+    }
+
     private ICheckOutReceipt checkOutBook(IBookTextContent book) throws AbstractRentalException {
-        assertNotNull("Expected to retrieve a book with id=1", book);
+        assertNotNull("Expected a non-null book for check-out", book);
 
         ICheckOutReceipt receipt = new CheckOutReceipt();
         receipt = book.checkout(receipt);

@@ -17,7 +17,6 @@ public class CheckOut extends AbstractEntity implements ICheckOut {
     private Date dueDate;
 
     @JoinColumn(name = "CONTENT")
-    //@ManyToOne(targetEntity = AbstractContent.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     public IContent getContent() {
         return content;
     }
