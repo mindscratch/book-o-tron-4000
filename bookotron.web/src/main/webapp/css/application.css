@@ -1,0 +1,19 @@
+/* @override http://localhost:8080/css/application.css */
+
+body {
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#header {
+	text-align: center;
+}
+
+#footer {
+	text-align: center;
+	font-size: 0.75em;
+}
+
+#timestamp {
+	text-align: right;
+	font-size: 0.75em;
+}

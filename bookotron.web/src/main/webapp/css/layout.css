@@ -1,0 +1,41 @@
+/* @override http://localhost:8080/css/layout.css */
+
+.accordion_head {
+	padding-left: 1em;
+	border-right: 0.3em inset #7a7a7a;
+	border-top: 0.3em outset #7a7a7a;
+	border-bottom: 0.1em solid #7a7a7a;
+	border-left: 0.3em outset #7a7a7a;
+	padding: 0.5em;
+}
+.rest_resource {
+	margin-top: -0.4em;
+	
+	border-right: 0.3em inset #7a7a7a;
+	border-bottom: 0.3em outset #7a7a7a;
+	border-left: 0.3em outset #7a7a7a;
+	padding-bottom: 0.5em;
+}
+.rest_item {
+	padding: 0.5em;
+	margin: 0.5em;
+	font-size: 0.85em;
+	background-color: #e7fff0;
+	border: 0.2em solid #626262;
+}
+.rest_method {
+	
+}
+.rest_url {
+	
+}
+.rest_xml_desc {
+
+}
+.rest_xml {
+   padding-left: 9em;
+}
+.clear_floats {
+	clear: none;
+	float: none;
+}
