@@ -11,17 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import ssig.bookotron.web.constants.View;
 
 @Controller
-public class LoginController {
-	
-	
+public class DocumentationController {
 
-	@RequestMapping("/login.htm")
+	@RequestMapping("/index.htm")
     public ModelAndView indexHandler() { 
 		Map<String, String> model = new HashMap<String, String>();	       
 		model.put("time", Calendar.getInstance().getTime().toString());
-	    return new ModelAndView(View.LOGIN, model);
+	    return new ModelAndView(View.REST_LIST, model);
 
     }
-
 }
-
