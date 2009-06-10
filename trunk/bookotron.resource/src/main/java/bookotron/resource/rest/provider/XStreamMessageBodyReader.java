@@ -12,11 +12,12 @@ import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.Provider;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 @Provider
 public class XStreamMessageBodyReader implements MessageBodyReader<Object> {
 
-	private final XStream xstream = new XStream();
+	private final XStream xstream = new XStream(new DomDriver());
 	
 	@Override
 	public boolean isReadable(Class<?> type, Type genericType,
@@ -32,7 +33,8 @@ public class XStreamMessageBodyReader implements MessageBodyReader<Object> {
 			MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
 			throws IOException, WebApplicationException {
 		
-		return xstream.fromXML(entityStream, type);
+		xstream.processAnnotations(type);
+		return xstream.fromXML(entityStream);
 	}
 
 }
