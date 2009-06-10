@@ -21,7 +21,9 @@ import java.util.Collection;
 @XStreamAlias("Author")
 public class Author extends AbstractEntity implements IAuthor {
 
+	@XStreamAlias("firstName")
     private String firstName;
+	@XStreamAlias("lastName")
     private String lastName;
     private Collection<IContent> authored;
 
