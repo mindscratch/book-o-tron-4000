@@ -1,4 +1,6 @@
-package bookotron.ui.model {
+package bookotron.ui.model.impl {
+import bookotron.ui.model.*;
+
 public class BaseTextContent extends BaseContent implements ITextContent{
 
     private var _numPages:int;

@@ -1,8 +1,13 @@
-package bookotron.ui.model {
-public class Publisher extends BaseEntity{
+package bookotron.ui.model.impl {
+import bookotron.ui.model.IPublisher;
+
+import mx.collections.ListCollectionView;
+
+public class Publisher extends BaseEntity implements IPublisher{
 
     private var _name:String;
     private var _website:String;
+    private var _content:ListCollectionView;
 
     public function Publisher() {
         super();
@@ -24,5 +29,13 @@ public class Publisher extends BaseEntity{
         _website = val;
     }
 
+
+    public function get content():ListCollectionView {
+        return _content;
+    }
+
+    public function set content(content:ListCollectionView):void {
+        _content = content;
+    }
 }
 }

@@ -1,18 +1,22 @@
-package bookotron.ui.model {
+package bookotron.ui.model.impl {
+import bookotron.ui.model.IContent;
+import bookotron.ui.model.IPublisher;
+import bookotron.ui.model.IRating;
 
 import mx.collections.ListCollectionView;
 
-public class BaseContent implements IContent{
+public class BaseContent extends BaseEntity implements IContent{
 
     private var _title:String;
     private var _authors:ListCollectionView;
     private var _pubDate:Date;
     private var _tags:ListCollectionView;
-    private var _publisher:Publisher;
+    private var _publisher:IPublisher;
     private var _description:String;
     private var _reviews:ListCollectionView;
     private var _acquiredDate:Date;
     private var _price:Number;
+    private var _rating:IRating;
 
     public function BaseContent() {
     }
@@ -49,11 +53,11 @@ public class BaseContent implements IContent{
         _tags = val;
     }
 
-    public function get publisher():Publisher {
+    public function get publisher():IPublisher {
         return _publisher;
     }
 
-    public function set publisher(val:Publisher):void {
+    public function set publisher(val:IPublisher):void {
         _publisher = val;
     }
 
@@ -87,6 +91,15 @@ public class BaseContent implements IContent{
 
     public function set price(val:Number):void {
         _price = val;
+    }
+
+
+    public function get rating():IRating {
+        return _rating;
+    }
+
+    public function set rating(rating:IRating):void {
+        _rating = rating;
     }
 }
 }

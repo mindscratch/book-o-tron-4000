@@ -4,8 +4,8 @@ Application{
 }
 
 Panel{
-    background-color:#bdbdbd;
-    border-color:#bdbdbd;
+    background-color: #d5d4d4;
+    border-color:#d5d4d4;
     background-alpha:1;
     border-alpha:1;
     header-colors:#bdbdbd, #bdbdbd;
@@ -14,8 +14,27 @@ Panel{
     corner-radius:15;
     drop-shadow-enabled:true;
     rounded-bottom-corners:true;
+    padding-top:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+}
+
+BaseViewer{
+    padding-top:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+}
+
+.welcomePanel{
+    padding-top:10px;
 }
 
 .stdBtn{
     corner-radius:0;
+}
+
+.debugOutput{
+   color:#ff0000;
 }
