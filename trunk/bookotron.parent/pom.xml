@@ -9,6 +9,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>BOOK-O-TRON :: Parent</name>
     <url>http://code.google.com/p/book-o-tron-4000/</url>
+    
 	<build>
 		<plugins>
 			<plugin>
@@ -80,13 +81,43 @@
         <!-- Data Layer DataSource properties -->
         <data.ds.driver>org.hsqldb.jdbcDriver</data.ds.driver>
         <data.ds.dialect>org.hibernate.dialect.HSQLDialect</data.ds.dialect>
-        <data.ds.url>jdbc:hsqldb:file:/book-o-tron/db/book-o-tron-db</data.ds.url>
+        <data.ds.address>localhost</data.ds.address>
+        <data.ds.port>9001</data.ds.port>
+        <data.ds.name>bot-db</data.ds.name>
+        <data.ds.alias>book-o-tron-db</data.ds.alias>
+        <data.ds.url>jdbc:hsqldb:hsql://${data.ds.address}:${data.ds.port}/${data.ds.alias}</data.ds.url>
         <data.ds.username>sa</data.ds.username>
         <data.ds.password></data.ds.password>
 
         <!-- Logging Properties -->
         <log.data.dir>/book-o-tron/logs</log.data.dir>
 	</properties>
+
+    <profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>local</value>
+				</property>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>test</value>
+				</property>
+			</activation>
+			<properties>
+				<data.ds.url>jdbc:hsqldb:mem:${data.ds.alias}</data.ds.url>
+			</properties>
+		</profile>
+    </profiles>
 
   	<dependencyManagement>
   		<dependencies>

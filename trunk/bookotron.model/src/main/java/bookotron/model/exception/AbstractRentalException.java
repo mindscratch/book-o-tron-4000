@@ -2,11 +2,12 @@ package bookotron.model.exception;
 
 import bookotron.model.entity.rental.ICheckOutReceipt;
 import bookotron.model.entity.rental.ICheckOut;
+import org.springframework.dao.DataAccessException;
 
 /**
  * This type of exception is thrown when a problem occurs during a rental process (i.e. check-out, check-in).
  */
-public abstract class AbstractRentalException extends RuntimeException {
+public abstract class AbstractRentalException extends DataAccessException {
 
     private ICheckOutReceipt receipt;
     private ICheckOut checkOut;
