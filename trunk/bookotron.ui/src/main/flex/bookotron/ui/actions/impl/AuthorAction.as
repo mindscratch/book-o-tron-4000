@@ -3,10 +3,13 @@ import bookotron.ui.actions.IAuthorAction;
 import bookotron.ui.events.AuthorActionEvent;
 import bookotron.ui.model.IAuthor;
 import bookotron.ui.model.impl.Author;
+import bookotron.ui.net.rest.RestService;
+import bookotron.ui.util.mappers.AuthorMapper;
 import bookotron.ui.view.vo.AuthorsVo;
 
 import mx.logging.ILogger;
 import mx.logging.Log;
+import mx.utils.UIDUtil;
 
 [Event(name="authorCreated",type="bookotron.ui.events.AuthorActionEvent")]
 [Event(name="authorsRetrieved",type="bookotron.ui.events.AuthorActionEvent")]
@@ -21,6 +24,8 @@ public class AuthorAction extends BaseRestAction implements IAuthorAction{
 
     private var _authorsVo:AuthorsVo;
 
+    private var _authorMapper:AuthorMapper;
+
     // injected
     [Inject]
     public function set authorsVo(authorsVo:AuthorsVo):void{
@@ -28,16 +33,30 @@ public class AuthorAction extends BaseRestAction implements IAuthorAction{
         _authorsVo = authorsVo;
     }
 
+    [Inject]
+    public function set authorMapper(authorMapper:AuthorMapper){
+        logger.info("injecting AuthorsMapper");
+        _authorMapper = authorMapper;
+    }
+
     // message handlers
 
     [MessageHandler(selector="createAuthor")]
     public function createAuthor(ev:AuthorActionEvent):void {
-        //var author:IAuthor = ev.author;
+        var author:IAuthor = new Author();
+        author.firstName = "Sean";
+        author.lastName = "Monaghan";
 
         logger.info("creating author");
 
+        _authorsVo.addAuthor(author);
+
+        var xml:XML = _authorMapper.toXml(author);
+
         // TODO: service call
-        dispatchEvent(new AuthorActionEvent(AuthorActionEvent.AUTHOR_CREATED, new Author()));
+        //_restService.doRestCall("rs/author/");
+
+        dispatchEvent(new AuthorActionEvent(AuthorActionEvent.AUTHOR_CREATED, author));
     }
 
     [MessageHandler(selector="retrieveAuthors")]

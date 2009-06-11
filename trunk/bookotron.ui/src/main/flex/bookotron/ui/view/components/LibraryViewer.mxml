@@ -24,7 +24,7 @@
         ]]>
     </mx:Script>
 
-    <mx:Label text="Library Viewer" />
+    <mx:Label text="@Resource(key='COMING_SOON_MESSAGE', bundle='UI')" />
     <mx:TileList id="libraryList" height="100%" width="100%" >
     </mx:TileList>
 </comp:BaseViewer>

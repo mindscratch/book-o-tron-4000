@@ -41,13 +41,13 @@
                         <keepAs3Metadata>AsyncInit</keepAs3Metadata>
                         <keepAs3Metadata>ObjectDefinition</keepAs3Metadata>
                         <keepAs3Metadata>PostConstruct</keepAs3Metadata>
-                        <keepAs3Metadata>PostConstruct</keepAs3Metadata>
                         <keepAs3Metadata>ManagedEvents</keepAs3Metadata>
                         <keepAs3Metadata>MessageDispatcher</keepAs3Metadata>
                         <keepAs3Metadata>Internal</keepAs3Metadata>
                         <keepAs3Metadata>Selector</keepAs3Metadata>
                         <keepAs3Metadata>PreDestroy</keepAs3Metadata>
                         <keepAs3Metadata>MessageHandler</keepAs3Metadata>
+                        <keepAs3Metadata>Required</keepAs3Metadata>
                     </keepAs3Metadatas>
                 </configuration>
             </plugin>

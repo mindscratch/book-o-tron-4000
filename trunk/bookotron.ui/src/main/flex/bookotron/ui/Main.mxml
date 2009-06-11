@@ -2,8 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
                 xmlns:comp="bookotron.ui.view.components.*"
                 layout="absolute"
-                preinitialize="pi()"
-                creationComplete="cc()">
+                preinitialize="pi()">
     <mx:Style source="/assets/css/main.css"/>
     <mx:Script>
 		<![CDATA[
@@ -13,12 +12,6 @@
         private function pi():void {
             FlexContextBuilder.build(MainContext);
         }
-
-        private function cc():void {
-            initializeXMLMappings();
-        }
-
-        public function initializeXMLMappings():void{}
 
 		]]>
 	</mx:Script>

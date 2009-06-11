@@ -18,8 +18,8 @@ public class BaseRestAction extends EventDispatcher {
     
     [Inject]
     public function set restService(restService:RestService):void{
-        _restService = restService;
         logger.info("restService injected");
+        _restService = restService;
     }
 
     public function set serviceUrl(serviceUrl:String):void{
