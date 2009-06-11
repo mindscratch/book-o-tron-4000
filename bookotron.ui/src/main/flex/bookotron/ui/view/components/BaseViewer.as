@@ -18,7 +18,7 @@ public class BaseViewer extends VBox{
     }
 
     private function onAddedToStage(ev:Event):void{
-        logger.info("onAddedToStage. Component is being introduced to Parsely");
+        logger.info("Component is being introduced to Parsely");
         dispatchEvent(new Event(CONFIGURE_IOC, true));
     }
 }

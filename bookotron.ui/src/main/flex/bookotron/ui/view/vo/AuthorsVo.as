@@ -9,6 +9,10 @@ public class AuthorsVo extends BaseVo{
 
     private var _authors:AuthorsCollection;
 
+    public function AuthorsVo(){
+      _authors = new AuthorsCollection();
+    }
+
     public function set authors(authors:AuthorsCollection):void{
         _authors = authors;
         dispatchEvent(new Event(VO_VALUE_CHANGED));

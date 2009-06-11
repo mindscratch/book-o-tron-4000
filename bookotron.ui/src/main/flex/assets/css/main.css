@@ -20,6 +20,11 @@ Panel{
     padding-left:10px;
 }
 
+LinkBar{
+    color:#AAB3B3;
+    disabled-color:#2B333C;
+}
+
 BaseViewer{
     padding-top:10px;
     padding-right:10px;

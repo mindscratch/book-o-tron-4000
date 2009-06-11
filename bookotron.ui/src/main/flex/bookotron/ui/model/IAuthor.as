@@ -11,5 +11,7 @@ public interface IAuthor extends IEntity{
 
     function get authored():ListCollectionView;
     function set authored(authored:ListCollectionView):void;
+
+    function get fullName():String;
 }
 }

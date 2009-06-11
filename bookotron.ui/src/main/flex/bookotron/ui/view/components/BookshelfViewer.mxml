@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
 <comp:BaseViewer xmlns:comp="bookotron.ui.view.components.*"
                xmlns:mx="http://www.adobe.com/2006/mxml">
-    <mx:Label text="Bookshelf Viewer" />
+    <mx:Label text="@Resource(key='COMING_SOON_MESSAGE', bundle='UI')" />
 </comp:BaseViewer>
