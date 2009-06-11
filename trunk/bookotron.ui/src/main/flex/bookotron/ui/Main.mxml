@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onCreationComplete()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+                xmlns:comp="bookotron.ui.view.components.*"
+                layout="absolute"
+                preinitialize="pi()"
+                creationComplete="cc()">
     <mx:Style source="/assets/css/main.css"/>
     <mx:Script>
 		<![CDATA[
-            import org.spicefactory.lib.task.events.TaskEvent;
-            import org.spicefactory.parsley.context.ApplicationContext;
-            import org.spicefactory.parsley.context.ApplicationContextParser;
-            import bookotron.ui.net.Foo;
-            import bookotron.ui.net.FooImpl;
 
-            private function onCreationComplete():void{
-                var a:Foo;
-                var b:FooImpl;
-                load();
-            }
+        import org.spicefactory.parsley.flex.FlexContextBuilder;
 
-            public function load () : void {
-                var parser:ApplicationContextParser = new ApplicationContextParser("context", true);
-                parser.addFile("context.xml");
-                parser.addEventListener(TaskEvent.COMPLETE, onComplete);
-                parser.addEventListener(ErrorEvent.ERROR, onError);
-                parser.start();
-            }
+        private function pi():void {
+            FlexContextBuilder.build(MainContext);
+        }
 
-            private function onComplete (event:TaskEvent) : void {
-                trace("Context loaded");
-                var fm:Foo = FooImpl(ApplicationContext.root.getObject("fooMaster"));
-                results.text = "Foo Master " + fm.name + " of age " +  fm.age + " says '" + fm.kungFoo() + "'";
-            }
+        private function cc():void {
+            initializeXMLMappings();
+        }
 
-            private function onError (event:ErrorEvent) : void {
-                results.text = "Error loading context: " + event.text;
-                trace("Error loading context: " + event.text);
-            }
+        public function initializeXMLMappings():void{}
 
 		]]>
 	</mx:Script>
-  <mx:Panel id="welcomePanel" title="@Resource(key='WELCOME_PANEL_TITLE', bundle='UI')"
-	    width="50%" height="50%"
-	    horizontalCenter="0" verticalCenter="0">
-        <mx:Label id="results" horizontalCenter="0" verticalCenter="0"/>
-        <mx:TextArea id="welcomeMessage" width="100%" height="100%" text="@Resource(key='WELCOME_PANEL_MESSAGE', bundle='UI')" 
-                backgroundAlpha="0" editable="false"/>
- </mx:Panel>
+    <mx:Panel id="welcomePanel" styleName="welcomePanel" title="@Resource(key='WELCOME_PANEL_TITLE', bundle='UI')"
+              width="90%" height="90%"
+              horizontalCenter="0" verticalCenter="0">
+        <mx:VDividedBox width="100%" height="100%">
+            <mx:TabNavigator id="tn" width="100%" height="75%">
+
+                <comp:LibraryViewer label="@Resource(key='LIBRARY_TAB_LABEL', bundle='UI')" width="100%" height="100%"/>
+
+                <comp:BookshelfViewer label="@Resource(key='BOOKSHELF_TAB_LABEL', bundle='UI')" width="100%" height="100%" />
+
+                <comp:AdminViewer label="@Resource(key='ADMIN_TAB_LABEL', bundle='UI')" width="100%" height="100%"/>
+                
+            </mx:TabNavigator>
+            <mx:TextArea id="debugOutput" styleName="debugOutput"
+                         width="100%" height="25%"
+                         backgroundAlpha="0" editable="true"/>
+        </mx:VDividedBox>
+        <mx:ControlBar id="mainControlBar">
+            <mx:Label id="bookshelfStatusMessage" text="@Resource(key='BOOKSHELF_STATUS_MESSAGE', bundle='UI')"/>
+            <mx:Spacer width="100%"/>
+        </mx:ControlBar>
+    </mx:Panel>
 </mx:Application>

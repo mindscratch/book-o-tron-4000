@@ -5,10 +5,10 @@
 	
 	<mx:Script>
 		<![CDATA[			
-			import flexunit.framework.TestSuite;
-			import ssig.ui.TestApp;
+        import bookotron.ui.TestApp;
+        import flexunit.framework.TestSuite;
 			
-			private function onCreationComplete(){
+			private function onCreationComplete():void{
  				testRunner.test = createSuite();
  				testRunner.startTest();
  			}

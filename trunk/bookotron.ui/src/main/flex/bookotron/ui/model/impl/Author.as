@@ -1,6 +1,9 @@
-package bookotron.ui.model {
+package bookotron.ui.model.impl {
+import bookotron.ui.model.IAuthor;
+
 import mx.collections.ListCollectionView;
-public class Author extends BaseEntity{
+
+public class Author extends BaseEntity implements IAuthor{
 
     private var _firstName:String;
     private var _lastName:String;
@@ -13,24 +16,24 @@ public class Author extends BaseEntity{
         return _firstName;
     }
 
-    public function set firstName(val:String):void {
-        _firstName = val;
+    public function set firstName(firstName:String):void {
+        _firstName = firstName;
     }
 
     public function get lastName():String {
         return _lastName;
     }
 
-    public function set lastName(val:String):void {
-        _lastName = val;
+    public function set lastName(lastName:String):void {
+        _lastName = lastName;
     }
 
     public function get authored():ListCollectionView {
         return _authored;
     }
 
-    public function set authored(val:ListCollectionView):void {
-        _authored = val;
+    public function set authored(authored:ListCollectionView):void {
+        _authored = authored;
     }
 }
 }
