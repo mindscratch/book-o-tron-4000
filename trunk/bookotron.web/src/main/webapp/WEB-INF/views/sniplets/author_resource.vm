@@ -15,7 +15,7 @@
 	</fieldset>
 	
 	<fieldset class="rest_item">
-		<legend>Read a new Author</legend>
+		<legend>Read an Author</legend>
 		<div class="rest_method">http method: GET</div>
 		<div class="rest_url">url: #springUrl('/rs/author/1')</div>
 		<div class="rest_xml_desc">Example response:</div>
@@ -32,7 +32,7 @@
 	</fieldset>
 	
 	<fieldset class="rest_item">
-		<legend>Update a new Author</legend>
+		<legend>Update an Author</legend>
 		<div class="rest_method">http method: PUT</div>
 		<div class="rest_url">url: #springUrl('/rs/author/1')</div>
 		<div class="rest_xml_desc">Example input:</div>
@@ -49,7 +49,7 @@
 	</fieldset>
 	
 	<fieldset class="rest_item">
-		<legend>DELETE a new Author</legend>
+		<legend>DELETE an Author</legend>
 		<div class="rest_method">http method: DELETE</div>
 		<div class="rest_url">url: #springUrl('/rs/author/1')</div>
 	</fieldset>
