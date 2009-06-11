@@ -2,6 +2,7 @@ package bookotron.data.model.entity.impl.author;
 
 import bookotron.model.entity.author.IAuthor;
 import bookotron.model.entity.content.IContent;
+import bookotron.model.entity.user.IUser;
 import bookotron.data.model.entity.impl.AbstractEntity;
 import bookotron.data.model.entity.impl.content.AbstractContent;
 

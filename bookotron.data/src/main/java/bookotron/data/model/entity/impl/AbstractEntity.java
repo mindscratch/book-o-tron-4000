@@ -2,6 +2,7 @@ package bookotron.data.model.entity.impl;
 
 import bookotron.model.entity.user.IUser;
 import bookotron.model.entity.IEntity;
+import bookotron.data.model.entity.impl.user.User;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -55,7 +56,7 @@ public abstract class AbstractEntity implements IEntity {
         this.modifyDate = modifyDate;
     }
 
-    @Column(name="ADDED_BY")
+    @OneToOne(targetEntity = User.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     public IUser getAddedBy() {
         return addedBy;
     }
@@ -64,7 +65,7 @@ public abstract class AbstractEntity implements IEntity {
         this.addedBy = addedBy;
     }
 
-    @Column(name="MODIFIED_BY")
+    @OneToOne(targetEntity = User.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     public IUser getModifiedBy() {
         return modifiedBy;
     }

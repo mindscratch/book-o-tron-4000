@@ -17,14 +17,21 @@ import bookotron.data.model.entity.impl.rental.CheckOutReceipt;
 import bookotron.data.dao.IBaseDao;
 import bookotron.data.dao.impl.author.AuthorDaoTest;
 import bookotron.data.dao.impl.AbstractDaoTest;
+import static org.junit.Assert.*;
+
+import javax.annotation.Resource;
 
 public class BookDaoTest extends AbstractDaoTest {
 
     private static final Log log = LogFactory.getLog(BookDaoTest.class);
 
-    @Autowired
-    @Qualifier("bookDao")
+    // JSR-250: Common Annotations for Java
+    @Resource
     private IBaseDao<IBookTextContent> bookDao;
+
+    // this would fail
+//    @Resource
+//    private IBaseDao<IBookTextContent> someDao;
 
     @Autowired
     @Qualifier("checkOutReceiptDao")

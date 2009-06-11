@@ -8,8 +8,11 @@ import bookotron.model.exception.EntityNotFoundException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -17,7 +20,7 @@ public class AuthorDaoTest extends AbstractDaoTest {
 
     private static final Log log = LogFactory.getLog(AuthorDaoTest.class);
 
-    @Autowired
+    @Autowired//(required = false)
     @Qualifier("authorDao")
     private IBaseDao<IAuthor> dao;
 

@@ -3,6 +3,39 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
+    <bean id="dbDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${data.ds.driver}" />
+        <property name="url"  value="${data.ds.url}" />
+        <property name="username" value="${data.ds.username}" />
+        <property name="password" value="${data.ds.password}" />
+    </bean>
 
+    <!-- create the EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="botPersistenceUnit"/>
+        <property name="dataSource" ref="dbDataSource"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="generateDdl" value="true"/>
+                <property name="databasePlatform" value="${data.ds.dialect}"/>
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.archive.autodetection">class</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- manages JPA transactions -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="dataSource" ref="dbDataSource"/>
+    </bean>
+
+    <!-- tells Spring to look for classes marked with @Transactional -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>
