@@ -21,7 +21,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.BeforeTransaction;
+import org.springframework.test.context.transaction.AfterTransaction;
 import org.springframework.transaction.annotation.Transactional;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.sql.DataSource;
 import java.io.InputStream;
@@ -43,7 +46,9 @@ import java.util.ArrayList;
 /**
  * An abstract class which provides support for other DAO tests
  */
-public abstract class AbstractDaoTest extends AbstractTransactionalDataSourceSpringContextTests {
+public abstract class AbstractDaoTest {//extends AbstractTransactionalDataSourceSpringContextTests {
+
+    private static final Log log = LogFactory.getLog(AbstractDaoTest.class);
 
     @Autowired
     protected DataSource dbDataSource;
