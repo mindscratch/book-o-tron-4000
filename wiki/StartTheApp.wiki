@@ -4,7 +4,7 @@ These instructions are provided to help you get the application "installed" and 
     {{{
     $ mvn clean install
     }}}
-  # Setup the Database
+  # Setup the Database and Start the Application
     {{{
     // create a directory for the DB (BoT-4k uses HSQL)
     $ mkdir /home/<myuser>/bot-db
