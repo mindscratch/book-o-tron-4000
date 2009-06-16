@@ -2,6 +2,7 @@ These instructions are provided to help you get the application "installed" and 
 
   # Build Book-o-Tron 4000
     {{{
+    $ cd <bookotron_home>
     $ mvn clean install
     }}}
   # Setup the Database and Start the Application
