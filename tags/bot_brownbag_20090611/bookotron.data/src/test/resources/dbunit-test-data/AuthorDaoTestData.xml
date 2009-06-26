@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- Rows must be grouped by table, meaning all BASE_CONTENT entries must be grouped together in order, having them
+     out of order causes an AmbiguousTableNameException
+-->
+
+<dataset>
+    <!-- Authors -->
+    <AUTHOR ID="1" FIRST_NAME="Jack" LAST_NAME="Smith" DELETED="false" ADD_DATE="2009-06-05"/>
+
+    <!-- BASE_CONTENT -->
+    <BASE_CONTENT ID="1" TITLE="Groovy in Action" DESCRIPTION="A book about Groovy." PRICE="19.95" RATING="1" DELETED="false" PUB_DATE="2008-01-03"/>
+    <BASE_CONTENT ID="2" TITLE="JavaFX RefCard" DESCRIPTION="A RefCard from DZone about JavaFX." PRICE="0" RATING="2" DELETED="false" PUB_DATE="2008-05-02"/>
+
+    <!-- BASE_TEXT_CONTENT -->
+    <BASE_TEXT_CONTENT ID="1" NUM_PAGES="330" />
+    <BASE_TEXT_CONTENT ID="2" NUM_PAGES="6" />
+
+    <!-- BOOKS -->
+    <BOOK ID="1" EDITION="1st Edition" />
+
+    <!-- PDFs -->
+    <PDF ID="2" FILE_SIZE="13840" />
+
+    <!-- Ratings -->
+    <RATING ID="1" VALUE="4" LABEL="4 Stars" />
+    <RATING ID="2" VALUE="3" LABEL="3 Stars" />
+
+    <!-- AUTHOR to CONTENT JOIN -->
+    <AUTHOR_BASE_CONTENT AUTHOR_ID="1" AUTHORED_ID="1" />
+    <AUTHOR_BASE_CONTENT AUTHOR_ID="1" AUTHORED_ID="2" />
+
+    <!-- BASE_CONTENT to AUTHOR JOIN -->
+    <BASE_CONTENT_AUTHOR BASE_CONTENT_ID="1" AUTHORS_ID="1" />
+    <BASE_CONTENT_AUTHOR BASE_CONTENT_ID="2" AUTHORS_ID="1" />
+</dataset>

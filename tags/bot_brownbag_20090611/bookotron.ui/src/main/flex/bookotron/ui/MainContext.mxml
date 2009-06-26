@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<mx:Object xmlns:mx="http://www.adobe.com/2006/mxml"
+        xmlns:rest="bookotron.ui.net.rest.*"
+        xmlns:actions="bookotron.ui.actions.impl.*"
+        xmlns:vo="bookotron.ui.view.vo.*"
+        xmlns:mappers="bookotron.ui.util.mappers.*">
+    
+    <!-- Actions -->
+    <actions:AuthorAction id="authorAction" serviceUrl="author/" />
+    <actions:BookAction id="bookAction" serviceUrl="book/" />
+
+    <!--View Value Objects-->
+    <vo:AuthorsVo id="authorsVo" />
+
+    <!-- Services -->
+    <rest:RestService id="restService" baseUrl="http://localhost:8080/rs/" resultFormat="xml" />
+
+    <!--Mapping Utils-->
+    <mappers:AuthorMapper id="authorMapper"/>
+    
+    <!-- Misc -->
+    <mx:TraceTarget fieldSeparator="[:]" includeCategory="true" includeLevel="true" includeTime="true" />
+
+
+</mx:Object>

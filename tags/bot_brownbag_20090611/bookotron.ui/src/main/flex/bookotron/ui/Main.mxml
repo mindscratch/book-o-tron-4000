@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+                xmlns:comp="bookotron.ui.view.components.*"
+                layout="absolute"
+                preinitialize="pi()">
+    <mx:Style source="/assets/css/main.css"/>
+    <mx:Script>
+		<![CDATA[
+
+        import org.spicefactory.parsley.flex.FlexContextBuilder;
+
+        private function pi():void {
+            FlexContextBuilder.build(MainContext);
+        }
+
+		]]>
+	</mx:Script>
+    <mx:Panel id="welcomePanel" styleName="welcomePanel" title="@Resource(key='WELCOME_PANEL_TITLE', bundle='UI')"
+              width="90%" height="90%"
+              horizontalCenter="0" verticalCenter="0">
+        <mx:VDividedBox width="100%" height="100%">
+            <mx:TabNavigator id="tn" width="100%" height="75%">
+
+                <comp:LibraryViewer label="@Resource(key='LIBRARY_TAB_LABEL', bundle='UI')" width="100%" height="100%"/>
+
+                <comp:BookshelfViewer label="@Resource(key='BOOKSHELF_TAB_LABEL', bundle='UI')" width="100%" height="100%" />
+
+                <comp:AdminViewer label="@Resource(key='ADMIN_TAB_LABEL', bundle='UI')" width="100%" height="100%"/>
+                
+            </mx:TabNavigator>
+            <mx:TextArea id="debugOutput" styleName="debugOutput"
+                         width="100%" height="25%"
+                         backgroundAlpha="0" editable="true"/>
+        </mx:VDividedBox>
+        <mx:ControlBar id="mainControlBar">
+            <mx:Label id="bookshelfStatusMessage" text="@Resource(key='BOOKSHELF_STATUS_MESSAGE', bundle='UI')"/>
+            <mx:Spacer width="100%"/>
+        </mx:ControlBar>
+    </mx:Panel>
+</mx:Application>

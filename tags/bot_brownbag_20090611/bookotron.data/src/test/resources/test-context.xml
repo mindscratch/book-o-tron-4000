@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:bookotron-data.xml" />
+
+    <bean id="authorDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.author.Author</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="bookDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.content.text.book.BookTextContent</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="checkOutReceiptDao" class="bookotron.data.dao.impl.BaseDao">
+        <constructor-arg>
+            <value>bookotron.data.model.entity.impl.rental.CheckOutReceipt</value>
+        </constructor-arg>
+    </bean>
+
+</beans>

@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<comp:BaseViewer xmlns:comp="bookotron.ui.view.components.*"
+                 xmlns:mx="http://www.adobe.com/2006/mxml">
+    <mx:Metadata>
+        [Event(name="createAuthor",type="bookotron.ui.events.AuthorActionEvent")]
+        [Event(name="retrieveAuthor",type="bookotron.ui.events.AuthorActionEvent")]
+        [Event(name="updateAuthor",type="bookotron.ui.events.AuthorActionEvent")]
+        [Event(name="deletedAuthor",type="bookotron.ui.events.AuthorActionEvent")]
+
+        [ManagedEvents("createAuthor,retrieveAuthor,updateAuthor,authorDeleted")]
+    </mx:Metadata>
+
+    <mx:Script>
+    <![CDATA[
+        import bookotron.ui.events.AuthorActionEvent;
+        import bookotron.ui.model.IAuthor;
+        import bookotron.ui.view.vo.AuthorsVo;
+
+        import mx.events.ListEvent;
+        import mx.logging.ILogger;
+        import mx.logging.Log;
+
+        protected static const logger:ILogger = Log.getLogger("AdminViewer");
+
+        private var _authorsVo:AuthorsVo;
+
+        private var _selectedAuthor:IAuthor;
+
+        private function cc():void {
+            logger.info("creation complete");
+        }
+
+        // injected
+        [Inject]
+        public function set authorsVo(authorsVo:AuthorsVo):void {
+            logger.info("injecting AuthorsVo");
+            _authorsVo = authorsVo;
+        }
+
+        // message handlers
+        [MessageHandler(selector="authorCreated")]
+        public function onAuthorCreated(ev:AuthorActionEvent):void {
+            logger.info("Author " + ev.author.id + " created");
+        }
+
+        // event handlers
+        private function onCreateAuthorBtnClick(ev:MouseEvent):void {
+            logger.info("onCreateAuthorBtnClick | dispatching CREATE_AUTHOR event");
+            dispatchEvent(new AuthorActionEvent(AuthorActionEvent.CREATE_AUTHOR));
+        }
+
+        private function onAuthorSelectionChange(ev:ListEvent):void {
+            logger.info("onAuthorSelectionChange | author selection changed");
+            _selectedAuthor = ev.target as IAuthor;
+        }
+    ]]>
+    </mx:Script>
+
+    <mx:LinkBar dataProvider="{adminViewStack}"/>
+
+    <mx:ViewStack id="adminViewStack" height="100%" width="100%">
+        <mx:VBox label="@Resource(key='AUTHOR_ADMIN_LABEL', bundle='UI')">
+            <mx:HDividedBox width="100%" height="100%">
+                <comp:AuthorList id="authorList" height="100%" width="75%" dataProvider="{_authorsVo.authors}"
+                                 labelField="fullName"
+                                 iconField="authorIco"
+                                 change="onAuthorSelectionChange(event)"/>
+
+                <comp:AuthorForm height="100%" width="25%" author="{authorList.selectedItem as IAuthor}"/>
+            </mx:HDividedBox>
+            <mx:HBox width="100%">
+                <mx:Button id="createAuthorBtn"
+                           click="onCreateAuthorBtnClick(event);"
+                           label="@Resource(key='CREATE_AUTHOR_BUTTON_LABEL', bundle='UI')"/>
+            </mx:HBox>
+        </mx:VBox>
+        <mx:Canvas label="@Resource(key='USER_ADMIN_LABEL', bundle='UI')">
+            <mx:Label text="@Resource(key='COMING_SOON_MESSAGE', bundle='UI')"/>
+        </mx:Canvas>
+    </mx:ViewStack>
+</comp:BaseViewer>

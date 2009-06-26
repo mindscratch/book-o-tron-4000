@@ -1,0 +1,10 @@
+<html>
+  <head>
+	#parse($tiles.getAttribute("html_head"))
+  </head>
+  <body>
+     #parse($tiles.getAttribute("header"))
+     #parse($tiles.getAttribute("central"))
+     #parse($tiles.getAttribute("footer"))
+  </body>
+</html>

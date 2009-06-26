@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<comp:BaseViewer xmlns:comp="bookotron.ui.view.components.*"
+               xmlns:mx="http://www.adobe.com/2006/mxml"
+               creationComplete="cc();">
+
+    <mx:Script>
+        <![CDATA[
+        import mx.events.FlexEvent;
+        import mx.logging.ILogger;
+        import mx.logging.Log;
+
+        protected static const logger:ILogger = Log.getLogger("LibraryViewer");
+        
+        private function cc():void{
+            logger.info("Creation Complete");
+            addEventListener(FlexEvent.SHOW, onShow);
+        }
+
+        private function onShow(ev:FlexEvent):void{
+            logger.info("onShow handled");
+        }
+
+        
+        ]]>
+    </mx:Script>
+
+    <mx:Label text="@Resource(key='COMING_SOON_MESSAGE', bundle='UI')" />
+    <mx:TileList id="libraryList" height="100%" width="100%" >
+    </mx:TileList>
+</comp:BaseViewer>

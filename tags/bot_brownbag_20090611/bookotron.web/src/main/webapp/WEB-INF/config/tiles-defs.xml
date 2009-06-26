@@ -1,0 +1,21 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+  "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+<tiles-definitions>
+
+	<definition name="main_base" page="/layouts/template.vm">
+		<put name="header" value="/layouts/header.vm" />
+		<put name="footer" value="/layouts/footer.vm" />
+		<put name="html_head" value="/layouts/basic_head.vm" />
+	</definition>
+
+	<definition name="login.tile" extends="main_base">
+		<put name="central" value="login.vm" />
+	</definition>
+	
+	<definition name="restlist.tile" extends="main_base">
+		<put name="html_head" value="/layouts/jquery_head.vm" />
+		<put name="central" value="restlist.vm" />
+	</definition>
+
+</tiles-definitions>

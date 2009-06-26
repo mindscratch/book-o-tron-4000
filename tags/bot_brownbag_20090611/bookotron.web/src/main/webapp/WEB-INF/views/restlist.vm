@@ -1,0 +1,5 @@
+<div id="timestamp">Last Accessed: ${time}</div>
+<div id="restlist">
+	#parse("sniplets/author_resource.vm")
+	#parse("sniplets/book_resource.vm")
+</div>
